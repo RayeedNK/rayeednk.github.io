@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskDescImage = document.getElementById('task-desc-image');
     const taskDescText = document.getElementById('task-desc-text');
     const taskDescContinueBtn = document.getElementById('task-desc-continue-btn');
+    const presidentContinueBtn = document.getElementById('president-continue-btn');
         // --- MOBILE VIEWPORT HEIGHT FIX ---
         function setScreenHeight() {
             const vh = window.innerHeight * 0.01;
