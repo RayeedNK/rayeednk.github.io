@@ -82,3 +82,44 @@ const dialogueData = {
     }
   }
 };
+// LEVEL 2 – Wine Society Checkpoint (Self-Awareness focus)
+2: {
+    start: {
+        npcImage: "assets/wine_society.png",
+        text: "You need someone to manage the Wine Society checkpoint outside the church. Alcohol is involved, so cultural and ethical sensitivities matter. Who will you choose?",
+        options: [
+            { text: "Otto – Christian, avoids alcohol outside rituals.", next: "ottoOutcome", effects: { empathy: 5, selfAwareness: 10, regulation: 5 } },
+            { text: "Hunter – Knows wine well, but has a DUI rumor.", next: "hunterOutcome", effects: { empathy: -5, selfAwareness: 5, regulation: 10 } },
+            { text: "Ashar – Skilled manager, but doesn’t drink alcohol.", next: "asharOutcome", effects: { empathy: 10, selfAwareness: 5 } },
+            { text: "Filip – Very capable, but busy with other duties.", next: "filipOutcome", effects: { selfAwareness: 10, regulation: 5 } }
+        ]
+    },
+    ottoOutcome: {
+        npcImage: "assets/otto.png",
+        text: "Otto connects well with church members and respects cultural sensitivities. The checkpoint runs smoothly, though he avoids tastings.",
+        options: [
+            { text: "Good balance of respect and duty.", next: "end", effects: { empathy: 5, selfAwareness: 5 } }
+        ]
+    },
+    hunterOutcome: {
+        npcImage: "assets/hunter.png",
+        text: "Hunter runs the checkpoint efficiently with wine expertise, but some attendees worry about his rumored DUI history.",
+        options: [
+            { text: "High efficiency but possible ethical risk.", next: "end", effects: { empathy: -5, regulation: 5 } }
+        ]
+    },
+    asharOutcome: {
+        npcImage: "assets/ashar.png",
+        text: "Ashar manages logistics well and keeps things in order, but struggles when asked detailed wine questions.",
+        options: [
+            { text: "Reliable but limited wine knowledge.", next: "end", effects: { empathy: 5, selfAwareness: 5 } }
+        ]
+    },
+    filipOutcome: {
+        npcImage: "assets/filip.png",
+        text: "Filip performs competently, but juggling other duties causes some small delays.",
+        options: [
+            { text: "Capable, but multitasking reduces focus.", next: "end", effects: { selfAwareness: 5, regulation: 5 } }
+        ]
+    }
+},
