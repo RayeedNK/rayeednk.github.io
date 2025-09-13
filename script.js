@@ -243,10 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
         showScreen('map-screen');
     });
     
-    continueButton.addEventListener('click', () => {
-        updateMapView();
-        showScreen('map-screen');
-    });
+        continueButton.addEventListener('click', () => {
+            showScreen('wait-focus-modal');
+        });
 
         // Distractions Modal Logic
         distractionOptions.addEventListener('click', (e) => {
@@ -282,9 +281,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         distractionContinueBtn.addEventListener('click', () => {
-            showScreen('transition-screen');
+            showScreen('wait-focus-modal');
         });
 
+        // Wait and Focus modal logic
+        const waitFocusContinueBtn = document.getElementById('wait-focus-continue-btn');
+        waitFocusContinueBtn.addEventListener('click', () => {
+            updateMapView();
+            showScreen('map-screen');
+        });
     levelIcons.forEach(icon => {
         icon.addEventListener('click', () => {
             if (icon.classList.contains('unlocked')) {

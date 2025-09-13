@@ -7,13 +7,15 @@ body {
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Mobile viewport height variable for browser bar fix */
+    --vh: 1vh;
 }
 
 /* Screen Management */
 .screen {
     display: none;
     width: 100vw;
-    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
     min-height: 100vh;
     min-height: 100%;
     position: absolute;
@@ -25,7 +27,7 @@ body {
 .screen.active {
     display: flex;
     width: 100vw;
-    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
     min-height: 100vh;
     min-height: 100%;
 }
