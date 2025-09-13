@@ -283,13 +283,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const desc = taskDescriptions[levelNumber - 1];
         taskDescImage.src = desc.image;
         taskDescText.innerHTML = desc.text;
-        taskDescContinueBtn.textContent = 'Continue';
         gameState.nextLevelToStart = levelNumber;
+        if (levelNumber === 7) {
+            taskDescContinueBtn.disabled = true;
+            taskDescContinueBtn.textContent = 'Continue (Disabled)';
+            taskDescContinueBtn.style.opacity = '0.5';
+            taskDescContinueBtn.style.cursor = 'not-allowed';
+        } else {
+            taskDescContinueBtn.disabled = false;
+            taskDescContinueBtn.textContent = 'Continue';
+            taskDescContinueBtn.style.opacity = '';
+            taskDescContinueBtn.style.cursor = '';
+        }
     }
 
     // --- EVENT LISTENERS ---
     startButton.addEventListener('click', () => {
         showScreen('president-intro-screen');
+    });
+
+    presidentContinueBtn.addEventListener('click', () => {
+        // Show first task description (Level 1) after Probba President intro
+        showTaskDescription(1);
     });
 
     presidentContinueBtn.addEventListener('click', () => {
