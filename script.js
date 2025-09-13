@@ -1,5 +1,3 @@
-console.log("Script loaded");
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM ELEMENTS ---
@@ -25,12 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalSelfAwareness = document.getElementById('final-self-awareness');
     const finalRegulation = document.getElementById('final-regulation');
 
-        // Distractions Modal Elements
-        const distractionsModal = document.getElementById('distractions-modal');
-        const distractionOptions = document.getElementById('distraction-options');
-        const distractionOutcome = document.getElementById('distraction-outcome');
-        const distractionContinueBtn = document.getElementById('distraction-continue-btn');
-        const flyerProgressValue = document.getElementById('flyer-progress-value');
+    // Character Profiles Modal Elements
+    const characterProfilesModal = document.getElementById('character-profiles-modal');
+    const profileImage = document.getElementById('profile-image');
+    const profileDescription = document.getElementById('profile-description');
+    const profileContinueBtn = document.getElementById('profile-continue-btn');
+
+    // Distractions Modal Elements
+    const distractionsModal = document.getElementById('distractions-modal');
+    const distractionOptions = document.getElementById('distraction-options');
+    const distractionOutcome = document.getElementById('distraction-outcome');
+    const distractionContinueBtn = document.getElementById('distraction-continue-btn');
+    const flyerProgressValue = document.getElementById('flyer-progress-value');
 
     // --- GAME STATE ---
     const gameState = {
@@ -42,8 +46,29 @@ document.addEventListener('DOMContentLoaded', () => {
             regulation: 50
         },
         currentDialogueNode: null,
-            flyerProgress: 0,
+        flyerProgress: 0,
+        profileIndex: 0
     };
+
+        // Character Profiles Data
+        const characterProfiles = [
+            {
+                image: 'assets/otto.png',
+                description: '<b>Otto</b><br>Christian, respected, avoids alcohol personally. Trusted by church members.'
+            },
+            {
+                image: 'assets/hunter.png',
+                description: '<b>Hunter</b><br>Experienced with wine, but rumored DUI. Efficient and knowledgeable.'
+            },
+            {
+                image: 'assets/ashar.png',
+                description: '<b>Ashar</b><br>Great manager, no wine knowledge, never drank. Handles logistics well.'
+            },
+            {
+                image: 'assets/filip.png',
+                description: '<b>Filip</b><br>Capable but already busy with tasks. Competent but stretched thin.'
+            }
+        ];
 
     // --- FUNCTIONS ---
     function showScreen(screenId) {
@@ -51,6 +76,48 @@ document.addEventListener('DOMContentLoaded', () => {
             screen.classList.remove('active');
         });
         document.getElementById(screenId).classList.add('active');
+            // Set background for level screen
+            if (screenId === 'level-screen') {
+                const levelBg = document.getElementById('level-screen');
+                let bgImg = '';
+                switch (gameState.currentLevel) {
+                    case 1:
+                        bgImg = "assets/scenery level  1.jpg";
+                        break;
+                    case 2:
+                        bgImg = "assets/scenery level  2.jpg";
+                        break;
+                    case 3:
+                        bgImg = "assets/scenery level  3.jpg";
+                        break;
+                    case 4:
+                        bgImg = "assets/scenery level  4.jpg";
+                        break;
+                    case 5:
+                        bgImg = "assets/scenery level  5.jpg";
+                        break;
+                    case 6:
+                        bgImg = "assets/scenery level  6.jpg";
+                        break;
+                    default:
+                        bgImg = "assets/scenery1.png";
+                }
+                levelBg.style.backgroundImage = `url('${bgImg}')`;
+            }
+            // Set background for Alp distraction modal
+            if (screenId === 'distractions-modal') {
+                const distractionsModal = document.getElementById('distractions-modal');
+                distractionsModal.style.backgroundImage = "url('assets/scenery alp.jpg')";
+                distractionsModal.style.backgroundSize = "cover";
+                distractionsModal.style.backgroundPosition = "center";
+            }
+            // Remove background from other screens
+            if (screenId !== 'level-screen') {
+                document.getElementById('level-screen').style.backgroundImage = '';
+            }
+            if (screenId !== 'distractions-modal') {
+                document.getElementById('distractions-modal').style.backgroundImage = '';
+            }
         }
 
         function showDistractionsModal() {
@@ -76,11 +143,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startLevel(levelNumber) {
-        gameState.currentLevel = levelNumber;
-        gameState.currentDialogueNode = 'start';
-        showScreen('level-screen');
-        updateLevelUI();
-    }
+            gameState.currentLevel = levelNumber;
+            gameState.currentDialogueNode = 'start';
+            // Show character profiles before Level 2
+            if (levelNumber === 2) {
+                gameState.profileIndex = 0;
+                showCharacterProfile();
+            } else {
+                showScreen('level-screen');
+                updateLevelUI();
+            }
+        }
+
+        function showCharacterProfile() {
+            showScreen('character-profiles-modal');
+            const profile = characterProfiles[gameState.profileIndex];
+            profileImage.src = profile.image;
+            profileDescription.innerHTML = profile.description;
+            profileContinueBtn.textContent = (gameState.profileIndex < characterProfiles.length - 1) ? 'Continue' : 'Start Level';
+        }
+
+    profileContinueBtn.addEventListener('click', () => {
+        if (gameState.profileIndex < characterProfiles.length - 1) {
+            gameState.profileIndex++;
+            showCharacterProfile();
+        } else {
+            showScreen('level-screen');
+            updateLevelUI();
+        }
+    });
 
     function updateLevelUI() {
         const levelData = dialogueData[gameState.currentLevel];

@@ -257,6 +257,64 @@ body {
     display: none !important;
 }
 
+/* --- Character Profiles Modal --- */
+#character-profiles-modal {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #232526 0%, #414345 100%);
+    z-index: 20;
+}
+.profile-overlay {
+    background: rgba(0,0,0,0.7);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    padding: 40px 30px;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    animation: profileSlideIn 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes profileSlideIn {
+    0% { transform: translateY(60px) scale(0.95); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+#profile-image-container {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 25px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 24px #3498db99;
+    background: #222;
+}
+#profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+#profile-description {
+    font-size: 1.2em;
+    color: #ecf0f1;
+    margin-bottom: 30px;
+    min-height: 80px;
+}
+#profile-continue-btn {
+    font-size: 1.1em;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: none;
+    background: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px #3498db44;
+}
+#profile-continue-btn:hover {
+    background: #217dbb;
+}
+
 /* --- Distractions Modal --- */
 #distractions-modal {
     flex-direction: column;
