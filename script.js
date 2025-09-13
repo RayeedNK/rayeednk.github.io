@@ -302,15 +302,10 @@ document.addEventListener('DOMContentLoaded', () => {
         showScreen('president-intro-screen');
     });
 
-    presidentContinueBtn.addEventListener('click', () => {
-        // Show first task description (Level 1) after Probba President intro
-        showTaskDescription(1);
-    });
-
-    presidentContinueBtn.addEventListener('click', () => {
-        updateMapView();
-        showScreen('map-screen');
-    });
+        presidentContinueBtn.addEventListener('click', () => {
+            // Show first task description (Level 1) after Probba President intro
+            showTaskDescription(1);
+        });
     
         continueButton.addEventListener('click', () => {
             showScreen('wait-focus-modal');
