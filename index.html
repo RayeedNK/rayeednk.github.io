@@ -17,13 +17,30 @@
         </div>
     </div>
 
+        <!-- Probba President Intro Screen -->
+        <div id="president-intro-screen" class="screen">
+            <div class="profile-overlay">
+                <img src="assets/president.png" alt="Probba President" style="width:160px;height:160px;border-radius:50%;margin-bottom:20px;box-shadow:0 0 24px #3498db99;" />
+                <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">
+                    <b>Congratulations on being selected for Probba!</b><br>
+                    This is a great honor and I am happy to be the one to deliver you the news.<br>
+                    I am Patrik Wilska, the President of Probba, and I need your help with the upcoming Running BaBa event.<br>
+                    You will be given 7 tasks to complete in different locations. I’m very busy so I have to go now, but take this map and it will tell you where to go.<br>
+                    Just remember to treat each task with care and I’m sure you will do great.<br>
+                    <i>Smell ya later!</i>
+                </div>
+                <button id="president-continue-btn">Continue</button>
+            </div>
+        </div>
+
     <div id="map-screen" class="screen">
-        <div class="level-icon" id="level-1" data-level="1"><span>1</span></div>
-        <div class="level-icon" id="level-2" data-level="2"><span>2</span></div>
-        <div class="level-icon" id="level-3" data-level="3"><span>3</span></div>
-        <div class="level-icon" id="level-4" data-level="4"><span>4</span></div>
-        <div class="level-icon" id="level-5" data-level="5"><span>5</span></div>
-        <div class="level-icon" id="level-6" data-level="6"><span>6</span></div>
+           <div class="level-icon" id="level-1" data-level="1"><span>1</span></div>
+           <div class="level-icon" id="level-2" data-level="2"><span>2</span></div>
+           <div class="level-icon" id="level-3" data-level="3"><span>3</span></div>
+           <div class="level-icon" id="level-4" data-level="4"><span>4</span></div>
+           <div class="level-icon" id="level-5" data-level="5"><span>5</span></div>
+           <div class="level-icon" id="level-6" data-level="6"><span>6</span></div>
+           <div class="level-icon" id="level-7" data-level="7"><span>7</span></div>
     </div>
 
     <div id="level-screen" class="screen">
@@ -82,6 +99,26 @@
             </div>
         </div>
 
+            <!-- Task Description Modal -->
+            <div id="task-desc-modal" class="screen">
+                <div class="profile-overlay">
+                    <div id="task-desc-image-container">
+                        <img id="task-desc-image" src="" alt="Task Character" />
+                    </div>
+                    <div id="task-desc-text"></div>
+                    <button id="task-desc-continue-btn">Continue</button>
+                </div>
+            </div>
+
+            <!-- Wait and Focus Modal -->
+            <div id="wait-focus-modal" class="screen">
+                <div class="profile-overlay">
+                    <h2 style="color:#ffc107;margin-bottom:20px;">Wait and Focus</h2>
+                    <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">Do not Press Continue, Wait and Focus on the presentation for now.</div>
+                    <button id="wait-focus-continue-btn">Continue</button>
+                </div>
+            </div>
+
     <!-- Distractions Modal -->
     <div id="distractions-modal" class="screen">
         <div class="overlay">
@@ -96,6 +133,14 @@
             <button id="distraction-continue-btn" class="hidden">Continue</button>
         </div>
     </div>
+
+        <!-- Level 7 Task Description Modal -->
+        <div id="level7-modal" class="screen">
+            <div class="profile-overlay">
+                <div style="font-size:1.3em;color:#ecf0f1;margin-bottom:30px;">Hunter and Ayush Fighting in Class</div>
+                <button id="level7-continue-btn" disabled style="opacity:0.5;cursor:not-allowed;">Continue</button>
+            </div>
+        </div>
 
     <script src="assets/dialogue.js"></script>
     <script src="script.js"></script>
