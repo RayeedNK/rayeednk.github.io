@@ -1,5 +1,5 @@
 const dialogueData = {
-    // LEVEL 1 – Alp’s Flyer (Cultural perspective focus)
+    // LEVEL 1 – Alp’s Flyer (Cultural perspective focus).
     1: {
         start: {
             npcImage: "assets/alp_neutral.png",
@@ -7,8 +7,8 @@ const dialogueData = {
             options: [
                 { text: "Looks fine, I’ll accept it as is.", next: "acceptDesign", effects: { empathy: 1, regulation: -1, selfAwareness: -1 } },
                 { text: "That seems confusing. Can you change it?", next: "refuseDesign", effects: { regulation: -1, selfAwareness: 1 } },
-                { text: "Is this because of Arabic reading style?", next: "askArabic", effects: { empathy: 2, selfAwareness: 1 } },
-                { text: "Why are you doing it that way?", next: "askReason", effects: { empathy: 2, regulation: 2, selfAwareness: 1 } }
+                { text: "It’s so cool that you are following an Arabic right-to-left reading style!", next: "askArabic", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "Can you explain why it is from right to left ?", next: "askReason", effects: { empathy: 2, regulation: 2, selfAwareness: 1 } }
             ]
         },
         acceptDesign: {
