@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-button');
     const continueButton = document.getElementById('continue-button');
     const levelIcons = document.querySelectorAll('.level-icon');
+    const taskDescModal = document.getElementById('task-desc-modal');
+    const taskDescImage = document.getElementById('task-desc-image');
+    const taskDescText = document.getElementById('task-desc-text');
+    const taskDescContinueBtn = document.getElementById('task-desc-continue-btn');
         // --- MOBILE VIEWPORT HEIGHT FIX ---
         function setScreenHeight() {
             const vh = window.innerHeight * 0.01;
@@ -46,6 +50,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const distractionOutcome = document.getElementById('distraction-outcome');
     const distractionContinueBtn = document.getElementById('distraction-continue-btn');
     const flyerProgressValue = document.getElementById('flyer-progress-value');
+    
+
+    const taskDescriptions = [
+    {
+        image: 'assets/probba_member1.png',
+        text: 'Your Mission:<br>Alp has drafted the flyer for Running BaBa food checkpoints. You notice some unusual choices and must guide him to a version that works for everyone — while navigating cultural differences.'
+    },
+    {
+        image: 'assets/probba_member2.png',
+        text: 'Your Mission:<br>Help select the right person to manage the Wine Society checkpoint. Consider their background and the needs of the event.'
+    },
+    {
+        image: 'assets/probba_member3.png',
+        text: 'Your Mission:<br>Kasanji is missing! Convince him to join and help with the event.'
+    },
+    {
+        image: 'assets/probba_member4.png',
+        text: 'Your Mission:<br>Oskari values respect and hierarchy. Approach him in a way that builds trust and teamwork.'
+    },
+    {
+        image: 'assets/probba_member5.png',
+        text: 'Your Mission:<br>Ayush offers you a shortcut. Decide how to handle his offer ethically.'
+    },
+    {
+        image: 'assets/probba_member6.png',
+        text: 'Your Mission:<br>Meet Anne and challenge stereotypes. Find the best way to work together.'
+    },
+    {
+        image: 'assets/probba_member7.png',
+        text: 'Your Mission:<br>Hunter and Ayush are fighting in class. What will you do?'
+    }
+];    
+
+
 
     // --- GAME STATE ---
     const gameState = {
@@ -153,18 +191,22 @@ document.addEventListener('DOMContentLoaded', () => {
         regulationBar.style.width = `${gameState.stats.regulation}%`;
     }
 
-    function startLevel(levelNumber) {
-            gameState.currentLevel = levelNumber;
-            gameState.currentDialogueNode = 'start';
-            // Show character profiles before Level 2
-            if (levelNumber === 2) {
-                gameState.profileIndex = 0;
-                showCharacterProfile();
-            } else {
-                showScreen('level-screen');
-                updateLevelUI();
-            }
+    function startLevel(levelNumber, skipTaskDesc) {
+        gameState.currentLevel = levelNumber;
+        gameState.currentDialogueNode = 'start';
+        if (!skipTaskDesc) {
+            showTaskDescription(levelNumber);
+            return;
         }
+        // Show character profiles before Level 2
+        if (levelNumber === 2) {
+            gameState.profileIndex = 0;
+            showCharacterProfile();
+        } else {
+            showScreen('level-screen');
+            updateLevelUI();
+        }
+    }
 
         function showCharacterProfile() {
             showScreen('character-profiles-modal');
@@ -236,9 +278,21 @@ document.addEventListener('DOMContentLoaded', () => {
         finalRegulation.textContent = gameState.stats.regulation;
         showScreen('final-score-screen');
     }
+    function showTaskDescription(levelNumber) {
+        showScreen('task-desc-modal');
+        const desc = taskDescriptions[levelNumber - 1];
+        taskDescImage.src = desc.image;
+        taskDescText.innerHTML = desc.text;
+        taskDescContinueBtn.textContent = 'Continue';
+        gameState.nextLevelToStart = levelNumber;
+    }
 
     // --- EVENT LISTENERS ---
     startButton.addEventListener('click', () => {
+        showScreen('president-intro-screen');
+    });
+
+    presidentContinueBtn.addEventListener('click', () => {
         updateMapView();
         showScreen('map-screen');
     });
@@ -246,6 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
         continueButton.addEventListener('click', () => {
             showScreen('wait-focus-modal');
         });
+    taskDescContinueBtn.addEventListener('click', () => {
+        startLevel(gameState.nextLevelToStart, true);
+    });    
 
         // Distractions Modal Logic
         distractionOptions.addEventListener('click', (e) => {
