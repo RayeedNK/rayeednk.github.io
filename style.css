@@ -77,6 +77,8 @@ body {
 #level-2 { top: 50%; left: 40%; }
 #level-3 { top: 30%; left: 65%; }
 #level-4 { top: 65%; left: 75%; }
+#level-5 { top: 85%; left: 75%; }
+#level-6 { top: 80%; left: 45%; }
 
 .level-icon.locked {
     filter: grayscale(100%);

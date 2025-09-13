@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function endLevel() {
         gameState.levelStatus[gameState.currentLevel - 1] = 'completed';
         
-        if (gameState.currentLevel >= 4) { // Use >= in case more levels are added
+        if (gameState.currentLevel >= 6) { // Use >= in case more levels are added
             showFinalScore();
         } else {
             if (gameState.currentLevel < gameState.levelStatus.length) {
