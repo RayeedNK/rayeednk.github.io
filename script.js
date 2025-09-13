@@ -303,10 +303,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showScreen('president-intro-screen');
     });
 
-        presidentContinueBtn.addEventListener('click', () => {
+        function presidentContinueHandler() {
             // Show first task description (Level 1) after Probba President intro
             showTaskDescription(1);
-        });
+        }
+        presidentContinueBtn.addEventListener('click', presidentContinueHandler);
+        presidentContinueBtn.addEventListener('touchstart', presidentContinueHandler);
     
         continueButton.addEventListener('click', () => {
             showScreen('wait-focus-modal');

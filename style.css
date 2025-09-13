@@ -23,6 +23,8 @@ body {
     left: 0;
     padding: 15px;
     box-sizing: border-box;
+    z-index: 50;
+    pointer-events: auto;
 }
 .screen.active {
     display: flex;
@@ -178,7 +180,8 @@ body {
 .npc-portrait img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+         z-index: 100;
+         pointer-events: auto;
 }
 #dialogue-box {
     width: 100%;
@@ -321,6 +324,8 @@ body {
 }
 #profile-continue-btn:hover {
     background: #217dbb;
+         z-index: 101;
+         pointer-events: auto;
 }
 
 /* --- Distractions Modal --- */
