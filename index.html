@@ -71,6 +71,21 @@
         <button id="play-again-button">Play Again</button>
     </div>
 
+    <!-- Distractions Modal -->
+    <div id="distractions-modal" class="screen">
+        <div class="overlay">
+            <h2>Distractions: Interact with Alp</h2>
+            <p id="flyer-progress">Flyer Progress: <span id="flyer-progress-value">0%</span></p>
+            <div id="distraction-options">
+                <button class="distraction-btn" data-option="call">1️⃣ Call him directly: “Hey, focus now!”</button>
+                <button class="distraction-btn" data-option="text">2️⃣ Text him: “Please continue.”</button>
+                <button class="distraction-btn" data-option="nothing">3️⃣ Say nothing: “I’ll do it myself later.”</button>
+            </div>
+            <p id="distraction-outcome" style="margin-top:20px;"></p>
+            <button id="distraction-continue-btn" class="hidden">Continue</button>
+        </div>
+    </div>
+
     <script src="assets/dialogue.js"></script>
     <script src="script.js"></script>
 </body>
