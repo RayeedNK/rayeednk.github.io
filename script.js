@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- GAME STATE ---
     const gameState = {
         currentLevel: 0,
-        levelStatus: ['unlocked', 'locked', 'locked', 'locked','locked','locked'],
+        levelStatus: ['unlocked', 'locked', 'locked', 'locked','locked','locked','locked'],
         stats: {
             empathy: 50,
             selfAwareness: 50,
