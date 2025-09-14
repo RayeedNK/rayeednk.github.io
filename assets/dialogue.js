@@ -43,7 +43,7 @@ const dialogueData = {
             ]
         },
         end: {
-            npcImage: "assets/alp_done.png",
+            npcImage: "assets/alp_smile.png",
             text: "Okay, got it. Let’s move on!"
         }
     },
@@ -87,7 +87,7 @@ const dialogueData = {
     // LEVEL 3 – Kasanji (Expressive teammate)
     3: {
         start: {
-            npcImage: "assets/kasanji.png",
+            npcImage: "assets/kasanji_neutral.png",
             text: "Hey...Whats up? Let me Sleep....",
             options: [
                 { text: "Greet with a handshake and smile.", next: "handshake", effects: { empathy: 2, regulation: 1 } },
@@ -105,14 +105,14 @@ const dialogueData = {
         quietAsk: { npcImage: "assets/kasanji_unsure.png", text: "He nods but seems unsure. Might delay.", options: [{ text: "End", next: "end" }] },
         physicalGuide: { npcImage: "assets/kasanji_follow.png", text: "He enjoys interaction and follows along.", options: [{ text: "End", next: "end" }] },
         humor: { npcImage: "assets/kasanji_smile.png", text: "Your joke lightens the mood. He joins.", options: [{ text: "End", next: "end" }] },
-        end: { npcImage: "assets/kasanji.png", text: "Lesson: Matching energy and non-verbal cues builds rapport." }
+        end: { npcImage: "assets/kasanji_neutral.png", text: "Lesson: Matching energy and non-verbal cues builds rapport." }
     },
 
     // LEVEL 4 – Oskari (Gestures & hierarchy)
     4: {
         start: {
-            npcImage: "assets/oskari.png",
-            text: "ねえ、今すぐビールが飲みたい。ビールちょうだい?",
+            npcImage: "assets/oskari_neutral.png",
+            text: "ねえ、今すぐビールが飲みたい。ビールちょうだい? (You don't understand anything)",
             options: [
                 { text: "Bow slightly and smile politely.", next: "bow", effects: { empathy: 2, selfAwareness: 1 } },
                 { text: "Wave energetically, speak English loudly.", next: "loudWave", effects: { empathy: -1, regulation: -1 } },
@@ -120,7 +120,7 @@ const dialogueData = {
                 { text: "Approach casually.", next: "casual", effects: { empathy: -2, regulation: -2 } }
             ]
         },
-        bow: { npcImage: "assets/oskari_nod.png", text: "Oskari nods in acknowledgment. Positive start.", options: [{ text: "Try simple Japanese phrases.", next: "speakJapanese", effects: { empathy: 2, selfAwareness: 1 } }] },
+        bow: { npcImage: "assets/oskari_smile.png", text: "Oskari nods in acknowledgment. Positive start.", options: [{ text: "Try simple Japanese phrases.", next: "speakJapanese", effects: { empathy: 2, selfAwareness: 1 } }] },
         loudWave: { npcImage: "assets/oskari_confused.png", text: "He looks confused and uncomfortable.", options: [{ text: "End", next: "end" }] },
         gestureSilent: { npcImage: "assets/oskari_cautious.png", text: "Acceptable but minimal engagement.", options: [{ text: "Use gestures to explain task.", next: "gestureExplain", effects: { empathy: 2, selfAwareness: 1 } }] },
         casual: { npcImage: "assets/oskari_offended.png", text: "尊敬する方法を知らないのですか !!!", options: [{ text: "End", next: "end" }] },
@@ -133,7 +133,7 @@ const dialogueData = {
     // LEVEL 5 – Ayush (Speed money & silence)
     5: {
         start: {
-            npcImage: "assets/ayush.png",
+            npcImage: "assets/ayush_neutral.png",
             text: "Take this money, and do my work faster.",
             options: [
                 { text: "Thank you, I accept it", next: "accept", effects: { selfAwareness: -2, regulation: -2 } },
@@ -152,7 +152,7 @@ const dialogueData = {
     // LEVEL 6 – Anne (Breaking stereotypes)
     6: {
         start: {
-            npcImage: "assets/anne.png",
+            npcImage: "assets/anne_neutral.png",
             text: "Uhmm ??? You need something ???",
             options: [
                 { text: "Assume quiet & reserved, speak softly.", next: "quietAssume", effects: { selfAwareness: -1, empathy: -1 } },
@@ -162,7 +162,7 @@ const dialogueData = {
             ]
         },
         quietAssume: { npcImage: "assets/anne_talkative.png", text: "Hi My name is Anne ! Nice to meet you b", options: [{ text: "End", next: "end" }] },
-        directAssume: { npcImage: "assets/anne_tease.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
+        directAssume: { npcImage: "assets/anne_smile.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
         genderStereotype: { npcImage: "assets/anne_suspicious.png", text: "She glares: 'Is this because I’m a woman?!'", options: [{ text: "End", next: "end" }] },
         honestApproach: { npcImage: "assets/anne_smile.png", text: "She appreciates honesty, happily engages.", options: [{ text: "End", next: "end" }] },
         end: { npcImage: "assets/anne.png", text: "Lesson: Don’t rely on stereotypes. Adapt to the real individual." }

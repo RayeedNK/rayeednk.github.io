@@ -386,11 +386,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    playAgainButton.addEventListener('click', () => {
-        location.reload();
-    });
+    // Proceed to Final Level button logic
+    const proceedFinalBtn = document.getElementById('proceed-final-btn');
+    if (proceedFinalBtn) {
+        proceedFinalBtn.addEventListener('click', () => {
+            showScreen('error408-screen');
+        });
+    }
 
-    // --- INITIALIZATION ---
+    // Play Again button on error screen
+    const playAgainFinalBtn = document.getElementById('play-again-final-btn');
+    if (playAgainFinalBtn) {
+        playAgainFinalBtn.addEventListener('click', () => {
+            location.reload();
+        });
+    }
+
     showScreen('opening-screen');
     updateStatsUI();
 });

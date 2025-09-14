@@ -99,8 +99,7 @@
             <p>Self-Awareness: <span id="final-self-awareness">0</span></p>
             <p>Regulation: <span id="final-regulation">0</span></p>
         </div>
-        <button id="play-again-button">Play Again</button>
-        <button id="proceed-level7-btn">Proceed to Level 7</button>
+        <button id="proceed-final-btn">Proceed to Final Level</button>
     </div>
 
         <!-- Character Profiles Modal -->
@@ -137,12 +136,12 @@
     <!-- Distractions Modal -->
     <div id="distractions-modal" class="screen">
         <div class="overlay">
-            <h2>Aftyer each level, You can either call Alp to take update for the flyer or not disturb him and let him work in peace</h2>
+            <h2>After each level, You can either call Alp to take update for the flyer or not disturb him and let him work in peace</h2>
             <p id="flyer-progress">Flyer Progress: <span id="flyer-progress-value">0%</span></p>
             <div id="distraction-options">
-                <button class="distraction-btn" data-option="call">1️⃣ Call him directly in phone”</button>
-                <button class="distraction-btn" data-option="text">2️⃣ Text him”</button>
-                <button class="distraction-btn" data-option="nothing">3️⃣ Let him do his work”</button>
+                <button class="distraction-btn" data-option="call">1️⃣ Call Alp directly in phone”</button>
+                <button class="distraction-btn" data-option="text">2️⃣ Text Alp</button>
+                <button class="distraction-btn" data-option="nothing">3️⃣ Let Alp do his work”</button>
             </div>
             <p id="distraction-outcome" style="margin-top:20px;"></p>
             <button id="distraction-continue-btn" class="hidden">Continue</button>
@@ -151,6 +150,14 @@
 
         <!-- Level 7 Task Description Modal -->
         <div id="level7-modal" class="screen">
+        <!-- Error 408 Final Screen -->
+        <div id="error408-screen" class="screen">
+            <div class="profile-overlay">
+                <h2 style="color:#ffc107;margin-bottom:20px;">Error 408</h2>
+                <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">Classroom not loaded properly, characters escaped matrix....</div>
+                <button id="play-again-final-btn">Play Again</button>
+            </div>
+        </div>
             <div class="profile-overlay">
                 <div style="font-size:1.3em;color:#ecf0f1;margin-bottom:30px;">Hunter and Ayush Fighting in Class</div>
                 <button id="level7-continue-btn" disabled style="opacity:0.5;cursor:not-allowed;">Continue</button>
