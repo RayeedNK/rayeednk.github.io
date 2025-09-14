@@ -3,7 +3,7 @@ const dialogueData = {
     1: {
         start: {
             npcImage: "assets/alp_neutral.png",
-            text: "Hey! I designed this flyer for the food checkpoints. I listed them from right (nearest) to left (furthest). What do you think?",
+            text: "こんにちは！これはテストです。Hey! I designed this flyer for the food checkpoints. I listed them from nearest(right) to furthest (left). What do you think?",
             options: [
                 { text: "Looks fine, I’ll accept it as is.", next: "acceptDesign", effects: { empathy: 1, regulation: -1, selfAwareness: -1 } },
                 { text: "That seems confusing. Can you change it?", next: "refuseDesign", effects: { regulation: -1, selfAwareness: 1 } },
@@ -52,11 +52,11 @@ const dialogueData = {
     distraction: {
         start: {
             npcImage: "assets/alp_distracted.png",
-            text: "Alp is distracted again… Do you want to remind him?",
+            text: "You can either call Alp to take update for the flyer or not disturb him and let him work in peace",
             options: [
-                { text: "Call him directly: 'Hey, focus now!'", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Text him: 'Please continue.'", next: "end", effects: { empathy: 1, regulation: -1 } },
-                { text: "Say nothing, I’ll do it myself later.", next: "end", effects: { regulation: 1, selfAwareness: -1 } }
+                { text: "Call him directly in phone", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
+                { text: "Text him ", next: "end", effects: { empathy: 1, regulation: -1 } },
+                { text: "Let him do his work", next: "end", effects: { regulation: 1, selfAwareness: -1 } }
             ]
         },
         end: {
@@ -71,10 +71,10 @@ const dialogueData = {
             npcImage: "assets/manager.png",
             text: "We need someone to manage the Wine Society checkpoint outside the church. Who do you choose?",
             options: [
-                { text: "Otto – Christian, respected, avoids alcohol personally.", next: "ottoOutcome", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
+                { text: "Otto – Christian, respected and supported by the church, avoids alcohol personally.", next: "ottoOutcome", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
                 { text: "Hunter – Experienced with wine, but rumored DUI.", next: "hunterOutcome", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
-                { text: "Ashar – Great manager, no wine knowledge, never drank.", next: "asharOutcome", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Filip – Capable but already busy with tasks.", next: "filipOutcome", effects: { selfAwareness: 2, regulation: 1 } }
+                { text: "Ashar – Great manager, however he doesn't drink.", next: "asharOutcome", effects: { empathy: 1, selfAwareness: 1 } },
+                { text: "Filip – Very Capable but already busy with Base and Beer Club.", next: "filipOutcome", effects: { selfAwareness: 2, regulation: 1 } }
             ]
         },
         ottoOutcome: { npcImage: "assets/otto.png", text: "Otto connects well with church members. Smooth checkpoint, but avoids tastings.", options: [{ text: "Continue", next: "end" }] },
@@ -88,7 +88,7 @@ const dialogueData = {
     3: {
         start: {
             npcImage: "assets/kasanji.png",
-            text: "Kasanji hasn’t shown up yet. You go to his house to convince him.",
+            text: "Hey...Whats up? Let me Sleep....",
             options: [
                 { text: "Greet with a handshake and smile.", next: "handshake", effects: { empathy: 2, regulation: 1 } },
                 { text: "Wave from a distance, stay silent.", next: "waveSilent", effects: { empathy: -1, regulation: 1 } },
