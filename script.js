@@ -230,10 +230,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLevelUI() {
         const levelData = dialogueData[gameState.currentLevel];
         const nodeData = levelData[gameState.currentDialogueNode];
-        
+
         npcPortraitImage.src = nodeData.npcImage;
         dialogueText.textContent = nodeData.text;
         replyOptionsContainer.innerHTML = '';
+
+        // Set character name next to portrait
+        const npcNameSpan = document.getElementById('npc-name');
+        let name = '';
+        switch (gameState.currentLevel) {
+            case 1: name = 'Alp Iyol'; break;
+            case 2: name = 'Otto'; break;
+            case 3: name = 'Kasanji'; break;
+            case 4: name = 'Oskari'; break;
+            case 5: name = 'Ayush'; break;
+            case 6: name = 'Anne'; break;
+            case 7: name = 'Hunter & Ayush'; break;
+            default: name = '';
+        }
+        npcNameSpan.textContent = name;
 
         nodeData.options.forEach((option) => {
             const button = document.createElement('button');
