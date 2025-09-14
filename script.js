@@ -235,8 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dialogueText.textContent = nodeData.text;
         replyOptionsContainer.innerHTML = '';
 
-        // Set character name next to portrait
-        const npcNameSpan = document.getElementById('npc-name');
+        // Set character name above dialogue box
+        const npcNameDiv = document.getElementById('npc-name');
         let name = '';
         switch (gameState.currentLevel) {
             case 1: name = 'Alp Iyol'; break;
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 7: name = 'Hunter & Ayush'; break;
             default: name = '';
         }
-        npcNameSpan.textContent = name;
+        npcNameDiv.textContent = name;
 
         nodeData.options.forEach((option) => {
             const button = document.createElement('button');
