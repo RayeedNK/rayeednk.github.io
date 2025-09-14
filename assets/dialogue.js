@@ -3,7 +3,7 @@ const dialogueData = {
     1: {
         start: {
             npcImage: "assets/alp_neutral.png",
-            text: "こんにちは！これはテストです。Hey! I designed this flyer for the food checkpoints. I listed them from nearest(right) to furthest (left). What do you think?",
+            text: "Hey! I designed this flyer for the food checkpoints. I listed them from nearest(right) to furthest (left). What do you think?",
             options: [
                 { text: "Looks fine, I’ll accept it as is.", next: "acceptDesign", effects: { empathy: 1, regulation: -1, selfAwareness: -1 } },
                 { text: "That seems confusing. Can you change it?", next: "refuseDesign", effects: { regulation: -1, selfAwareness: 1 } },
@@ -112,18 +112,18 @@ const dialogueData = {
     4: {
         start: {
             npcImage: "assets/oskari.png",
-            text: "Oskari is senior and only speaks Japanese. He values respect and hierarchy. How do you approach?",
+            text: "ねえ、今すぐビールが飲みたい。ビールちょうだい?",
             options: [
                 { text: "Bow slightly and smile politely.", next: "bow", effects: { empathy: 2, selfAwareness: 1 } },
                 { text: "Wave energetically, speak English loudly.", next: "loudWave", effects: { empathy: -1, regulation: -1 } },
-                { text: "Gesture hello, wait silently.", next: "gestureSilent", effects: { empathy: 1, regulation: 1 } },
+                { text: "Say hello, wait silently.", next: "gestureSilent", effects: { empathy: 1, regulation: 1 } },
                 { text: "Approach casually.", next: "casual", effects: { empathy: -2, regulation: -2 } }
             ]
         },
         bow: { npcImage: "assets/oskari_nod.png", text: "Oskari nods in acknowledgment. Positive start.", options: [{ text: "Try simple Japanese phrases.", next: "speakJapanese", effects: { empathy: 2, selfAwareness: 1 } }] },
         loudWave: { npcImage: "assets/oskari_confused.png", text: "He looks confused and uncomfortable.", options: [{ text: "End", next: "end" }] },
         gestureSilent: { npcImage: "assets/oskari_cautious.png", text: "Acceptable but minimal engagement.", options: [{ text: "Use gestures to explain task.", next: "gestureExplain", effects: { empathy: 2, selfAwareness: 1 } }] },
-        casual: { npcImage: "assets/oskari_offended.png", text: "He feels disrespected.", options: [{ text: "End", next: "end" }] },
+        casual: { npcImage: "assets/oskari_offended.png", text: "尊敬する方法を知らないのですか !!!", options: [{ text: "End", next: "end" }] },
 
         speakJapanese: { npcImage: "assets/oskari_smile.png", text: "He appreciates the effort and cooperates.", options: [{ text: "End", next: "end" }] },
         gestureExplain: { npcImage: "assets/oskari_okay.png", text: "He understands and works with you.", options: [{ text: "End", next: "end" }] },
@@ -134,18 +134,18 @@ const dialogueData = {
     5: {
         start: {
             npcImage: "assets/ayush.png",
-            text: "Ayush offers you an envelope: 'Take this, it will make things easier.'",
+            text: "Take this money, and do my work faster.",
             options: [
-                { text: "Accept without question.", next: "accept", effects: { selfAwareness: -2, regulation: -2 } },
-                { text: "Reject firmly.", next: "reject", effects: { empathy: -1, selfAwareness: 2, regulation: 1 } },
-                { text: "Ask why he thinks it’s needed.", next: "askReason", effects: { empathy: 2, selfAwareness: 1, regulation: 1 } },
-                { text: "Deflect politely: ‘Let’s try without.’", next: "deflect", effects: { empathy: 2, regulation: 2 } }
+                { text: "Thank you, I accept it", next: "accept", effects: { selfAwareness: -2, regulation: -2 } },
+                { text: "I reject this bribery !!!", next: "reject", effects: { empathy: -1, selfAwareness: 2, regulation: 1 } },
+                { text: "What is this money for ?", next: "askReason", effects: { empathy: 2, selfAwareness: 1, regulation: 1 } },
+                { text: "How was the food in Currytime ? ", next: "deflect", effects: { empathy: 2, regulation: 2 } }
             ]
         },
         accept: { npcImage: "assets/ayush_smile.png", text: "Task moves quickly, but corruption normalized.", options: [{ text: "End", next: "end" }] },
         reject: { npcImage: "assets/ayush_offended.png", text: "He feels disrespected but you stay ethical.", options: [{ text: "End", next: "end" }] },
-        askReason: { npcImage: "assets/ayush_explain.png", text: "He explains: in his culture, small payments show respect. Dialogue opens.", options: [{ text: "End", next: "end" }] },
-        deflect: { npcImage: "assets/ayush_relief.png", text: "You avoid bribery without shaming him.", options: [{ text: "End", next: "end" }] },
+        askReason: { npcImage: "assets/ayush_explain.png", text: "In our culture, small payments show respect for hard-work. Dialogue opens.", options: [{ text: "End", next: "end" }] },
+        deflect: { npcImage: "assets/ayush_relief.png", text: "What do you mean Currytime ?? I ate food at cafeteria. Nicholas told you that right?", options: [{ text: "End", next: "end" }] },
         end: { npcImage: "assets/ayush.png", text: "Lesson: Balance ethics with empathy. Recognize silence or gifts differently across cultures." }
     },
 
@@ -153,7 +153,7 @@ const dialogueData = {
     6: {
         start: {
             npcImage: "assets/anne.png",
-            text: "You’re told: ‘Find a young Finnish woman to help.’ You meet Anne. How do you approach?",
+            text: "Uhmm ??? You need something ???",
             options: [
                 { text: "Assume quiet & reserved, speak softly.", next: "quietAssume", effects: { selfAwareness: -1, empathy: -1 } },
                 { text: "Assume direct & business-like.", next: "directAssume", effects: { regulation: 1, selfAwareness: 1 } },
@@ -161,7 +161,7 @@ const dialogueData = {
                 { text: "Drop assumptions: ask about her style.", next: "honestApproach", effects: { empathy: 2, regulation: 2, selfAwareness: 2 } }
             ]
         },
-        quietAssume: { npcImage: "assets/anne_talkative.png", text: "She talks nonstop! Your assumption backfires.", options: [{ text: "End", next: "end" }] },
+        quietAssume: { npcImage: "assets/anne_talkative.png", text: "Hi My name is Anne ! Nice to meet you b", options: [{ text: "End", next: "end" }] },
         directAssume: { npcImage: "assets/anne_tease.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
         genderStereotype: { npcImage: "assets/anne_suspicious.png", text: "She glares: 'Is this because I’m a woman?!'", options: [{ text: "End", next: "end" }] },
         honestApproach: { npcImage: "assets/anne_smile.png", text: "She appreciates honesty, happily engages.", options: [{ text: "End", next: "end" }] },
