@@ -132,22 +132,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 let bgImg = '';
                 switch (gameState.currentLevel) {
                     case 1:
-                        bgImg = "assets/scenery level  1.jpg";
+                        bgImg = "assets/scenery level 1.png";
                         break;
                     case 2:
-                        bgImg = "assets/scenery level  2.jpg";
+                        bgImg = "assets/scenery level 2.jpg";
                         break;
                     case 3:
-                        bgImg = "assets/scenery level  3.jpg";
+                        bgImg = "assets/scenery level 3.jpg";
                         break;
                     case 4:
-                        bgImg = "assets/scenery level  4.jpg";
+                        bgImg = "assets/scenery level 4.jpg";
                         break;
                     case 5:
-                        bgImg = "assets/scenery level  5.jpg";
+                        bgImg = "assets/scenery level 5.jpg";
                         break;
                     case 6:
-                        bgImg = "assets/scenery level  6.jpg";
+                        bgImg = "assets/scenery level 6.jpg";
                         break;
                     default:
                         bgImg = "assets/scenery1.png";
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set background for Alp distraction modal
             if (screenId === 'distractions-modal') {
                 const distractionsModal = document.getElementById('distractions-modal');
-                distractionsModal.style.backgroundImage = "url('assets/scenery alp.jpg')";
+                distractionsModal.style.backgroundImage = "url('assets/scenery1.jpeg')";
                 distractionsModal.style.backgroundSize = "cover";
                 distractionsModal.style.backgroundPosition = "center";
             }

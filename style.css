@@ -126,7 +126,7 @@ body {
 /* --- Level Screen --- */
 #level-screen {
     flex-direction: column;
-    background-image: url('assets/scenery1.png');
+    background-image: url('assets/scenery1.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
