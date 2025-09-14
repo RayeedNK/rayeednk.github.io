@@ -303,12 +303,13 @@ document.addEventListener('DOMContentLoaded', () => {
         showScreen('president-intro-screen');
     });
 
-        function presidentContinueHandler() {
-            // Show first task description (Level 1) after Probba President intro
-            showTaskDescription(1);
-        }
-        presidentContinueBtn.addEventListener('click', presidentContinueHandler);
-        presidentContinueBtn.addEventListener('touchstart', presidentContinueHandler);
+    // After president continue, go to map only
+    function presidentContinueHandler() {
+        updateMapView();
+        showScreen('map-screen');
+    }
+    presidentContinueBtn.addEventListener('click', presidentContinueHandler);
+    presidentContinueBtn.addEventListener('touchstart', presidentContinueHandler);
     
         continueButton.addEventListener('click', () => {
             showScreen('wait-focus-modal');
@@ -364,7 +365,23 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.addEventListener('click', () => {
             if (icon.classList.contains('unlocked')) {
                 const level = parseInt(icon.dataset.level);
-                startLevel(level);
+                showTaskDescription(level);
+                // Set mission screen background to match level
+                const taskDescModal = document.getElementById('task-desc-modal');
+                let bgImg = '';
+                switch (level) {
+                    case 1: bgImg = "assets/scenery level  1.jpg"; break;
+                    case 2: bgImg = "assets/scenery level  2.jpg"; break;
+                    case 3: bgImg = "assets/scenery level  3.jpg"; break;
+                    case 4: bgImg = "assets/scenery level  4.jpg"; break;
+                    case 5: bgImg = "assets/scenery level  5.jpg"; break;
+                    case 6: bgImg = "assets/scenery level  6.jpg"; break;
+                    case 7: bgImg = "assets/scenery1.png"; break;
+                    default: bgImg = "assets/scenery1.png";
+                }
+                taskDescModal.style.backgroundImage = `url('${bgImg}')`;
+                taskDescModal.style.backgroundSize = "cover";
+                taskDescModal.style.backgroundPosition = "center";
             }
         });
     });
