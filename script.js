@@ -150,14 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         bgImg = "assets/scenery level 6.jpg";
                         break;
                     default:
-                        bgImg = "assets/scenery1.png";
+                        bgImg = "assets/scenery1.jpg";
                 }
                 levelBg.style.backgroundImage = `url('${bgImg}')`;
             }
             // Set background for Alp distraction modal
             if (screenId === 'distractions-modal') {
                 const distractionsModal = document.getElementById('distractions-modal');
-                distractionsModal.style.backgroundImage = "url('assets/scenery1.jpeg')";
+                distractionsModal.style.backgroundImage = "url('assets/scenery1.jpg')";
                 distractionsModal.style.backgroundSize = "cover";
                 distractionsModal.style.backgroundPosition = "center";
             }
@@ -391,8 +391,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     case 4: bgImg = "assets/scenery level 4.jpg"; break;
                     case 5: bgImg = "assets/scenery level 5.jpg"; break;
                     case 6: bgImg = "assets/scenery level 6.jpg"; break;
-                    case 7: bgImg = "assets/scenery1.png"; break;
-                    default: bgImg = "assets/scenery1.jpeg";
+                    case 7: bgImg = "assets/scenery1.jpg"; break;
+                    default: bgImg = "assets/scenery1.jpg";
                 }
                 taskDescModal.style.backgroundImage = `url('${bgImg}')`;
                 taskDescModal.style.backgroundSize = "cover";
