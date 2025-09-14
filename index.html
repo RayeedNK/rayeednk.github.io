@@ -18,9 +18,25 @@
     </div>
 
         <!-- Probba President Intro Screen -->
-        <div id="president-intro-screen" class="screen" style="background-image:url('assets/President_Background.jpeg');background-size:cover;background-position:center;">
-            <div class="profile-overlay">
-                <img src="assets/president.jpeg" alt="Probba President" style="width:160px;height:160px;border-radius:50%;margin-bottom:20px;box-shadow:0 0 24px #3498db99;" />
+        <div id="president-intro-screen" class="screen" 
+            style="position: relative; 
+                    background-image:url('assets/President_Background.jpeg');
+                    background-size:cover;
+                    background-position:center;
+                    overflow:hidden;">
+
+            <!-- Overlay (dark + blur) -->
+            <div style="position:absolute;
+                        top:0;left:0;width:100%;height:100%;
+                        background:rgba(0,0,0,0.45);   /* dark overlay */
+                        backdrop-filter: blur(4px);     /* blur effect */
+                        z-index:1;"></div>
+
+    <!-- Content -->
+            <div class="profile-overlay" style="position:relative; z-index:2; text-align:center;">
+                <img src="assets/president.jpeg" 
+                    alt="Probba President" 
+                    style="width:160px;height:160px;border-radius:50%;margin-bottom:20px;box-shadow:0 0 24px #3498db99;" />
                 <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">
                     <b>Congratulations on being selected as Probba's new Event Coordinator!</b><br>
                     I am Patrik Wilska, the President of Probba, and I need your help with the upcoming Running BaBa event.
@@ -29,6 +45,7 @@
                 <button id="president-continue-btn">Continue</button>
             </div>
         </div>
+
 
     <div id="map-screen" class="screen">
            <div class="level-icon" id="level-1" data-level="1"><span>1</span></div>
@@ -120,12 +137,12 @@
     <!-- Distractions Modal -->
     <div id="distractions-modal" class="screen">
         <div class="overlay">
-            <h2>Distractions: Interact with Alp</h2>
+            <h2>Aftyer each level, You can either call Alp to take update for the flyer or not disturb him and let him work in peace</h2>
             <p id="flyer-progress">Flyer Progress: <span id="flyer-progress-value">0%</span></p>
             <div id="distraction-options">
-                <button class="distraction-btn" data-option="call">1️⃣ Call him directly: “Hey, focus now!”</button>
-                <button class="distraction-btn" data-option="text">2️⃣ Text him: “Please continue.”</button>
-                <button class="distraction-btn" data-option="nothing">3️⃣ Say nothing: “I’ll do it myself later.”</button>
+                <button class="distraction-btn" data-option="call">1️⃣ Call him directly in phone”</button>
+                <button class="distraction-btn" data-option="text">2️⃣ Text him”</button>
+                <button class="distraction-btn" data-option="nothing">3️⃣ Let him do his work”</button>
             </div>
             <p id="distraction-outcome" style="margin-top:20px;"></p>
             <button id="distraction-continue-btn" class="hidden">Continue</button>

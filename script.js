@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 image: 'assets/ashar.png',
-                description: '<b>Ashar</b><br>Great manager, no wine knowledge, never drank. Handles logistics well.'
+                description: '<b>Ashar</b><br>Great manager. Handles logistics well. However, doesnt drink wine'
             },
             {
                 image: 'assets/filip.png',
-                description: '<b>Filip</b><br>Capable but already busy with tasks. Competent but stretched thin.'
+                description: '<b>Filip</b><br>Capable but already busy with managing Baba Beer Club and Aalto BASE. Competent but stretched thin.'
             }
         ];
 
