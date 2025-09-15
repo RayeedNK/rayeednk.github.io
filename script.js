@@ -45,10 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Distractions Modal Elements
     const distractionsModal = document.getElementById('distractions-modal');
-    const distractionOptions = document.getElementById('distraction-options');
-    const distractionOutcome = document.getElementById('distraction-outcome');
     const distractionContinueBtn = document.getElementById('distraction-continue-btn');
-    const flyerProgressValue = document.getElementById('flyer-progress-value');
     
 
     const taskDescriptions = [
@@ -279,14 +276,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function endLevel() {
         gameState.levelStatus[gameState.currentLevel - 1] = 'completed';
-        
         if (gameState.currentLevel >= 6) { // Use >= in case more levels are added
             showFinalScore();
         } else {
             if (gameState.currentLevel < gameState.levelStatus.length) {
                 gameState.levelStatus[gameState.currentLevel] = 'unlocked';
             }
-                showDistractionsModal();
+            // Show the distractions modal (now just 'Please Proceed')
+            showScreen('distractions-modal');
         }
     }
     
@@ -336,38 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });    
 
         // Distractions Modal Logic
-        distractionOptions.addEventListener('click', (e) => {
-            if (e.target.classList.contains('distraction-btn')) {
-                distractionOptions.querySelectorAll('button').forEach(btn => btn.disabled = true);
-                let outcome = '';
-                let scoreChange = { empathy: 0, selfAwareness: 0, regulation: 0 };
-                switch (e.target.dataset.option) {
-                    case 'call':
-                        outcome = 'He returns to work immediately.';
-                        scoreChange = { empathy: 1, selfAwareness: 1, regulation: 0 };
-                        gameState.flyerProgress = Math.min(100, gameState.flyerProgress + 20);
-                        break;
-                    case 'text':
-                        outcome = 'He ignores text, work slows.';
-                        scoreChange = { empathy: 1, selfAwareness: 0, regulation: -1 };
-                        gameState.flyerProgress = Math.max(0, gameState.flyerProgress + 10);
-                        break;
-                    case 'nothing':
-                        outcome = 'Task delays; he feels left out.';
-                        scoreChange = { empathy: 0, selfAwareness: -1, regulation: 1 };
-                        gameState.flyerProgress = Math.max(0, gameState.flyerProgress + 5);
-                        break;
-                }
-                gameState.stats.empathy = Math.max(0, Math.min(100, gameState.stats.empathy + scoreChange.empathy));
-                gameState.stats.selfAwareness = Math.max(0, Math.min(100, gameState.stats.selfAwareness + scoreChange.selfAwareness));
-                gameState.stats.regulation = Math.max(0, Math.min(100, gameState.stats.regulation + scoreChange.regulation));
-                updateStatsUI();
-                flyerProgressValue.textContent = `${gameState.flyerProgress}%`;
-                distractionOutcome.textContent = outcome + `\n\nScore: Empathy ${scoreChange.empathy > 0 ? '+1' : scoreChange.empathy < 0 ? '-1' : ''}, Self-awareness ${scoreChange.selfAwareness > 0 ? '+1' : scoreChange.selfAwareness < 0 ? '-1' : ''}, Regulation ${scoreChange.regulation > 0 ? '+1' : scoreChange.regulation < 0 ? '-1' : ''}`;
-                distractionContinueBtn.classList.remove('hidden');
-            }
-        });
-
         distractionContinueBtn.addEventListener('click', () => {
             showScreen('wait-focus-modal');
         });
@@ -403,13 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Proceed to Final Level button logic
-    const proceedFinalBtn = document.getElementById('proceed-final-btn');
-    if (proceedFinalBtn) {
-        proceedFinalBtn.addEventListener('click', () => {
-            showScreen('error408-screen');
-        });
-    }
 
     // Play Again button on error screen
     const playAgainFinalBtn = document.getElementById('play-again-final-btn');
