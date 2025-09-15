@@ -52,11 +52,10 @@ const dialogueData = {
     distraction: {
         start: {
             npcImage: "assets/alp_distracted.png",
-            text: "You can either call Alp to take update for the flyer or not disturb him and let him work in peace",
+            text: "You may Now proceed to the discussion session and Wait for a while",
             options: [
-                { text: "Call him directly in phone", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Text him ", next: "end", effects: { empathy: 1, regulation: -1 } },
-                { text: "Let him do his work", next: "end", effects: { regulation: 1, selfAwareness: -1 } }
+                { text: "Continue", next: "end"},
+                
             ]
         },
         end: {
