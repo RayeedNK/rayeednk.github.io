@@ -328,7 +328,17 @@ document.addEventListener('DOMContentLoaded', () => {
             showScreen('wait-focus-modal');
         });
     taskDescContinueBtn.addEventListener('click', () => {
-        startLevel(gameState.nextLevelToStart, true);
+        // Always start the correct level and show its dialogue
+        gameState.currentLevel = gameState.nextLevelToStart;
+        gameState.currentDialogueNode = 'start';
+        // Show character profiles before Level 2
+        if (gameState.currentLevel === 2) {
+            gameState.profileIndex = 0;
+            showCharacterProfile();
+        } else {
+            showScreen('level-screen');
+            updateLevelUI();
+        }
     });    
 
 
