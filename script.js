@@ -234,21 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let nodeData = levelData ? levelData[gameState.currentDialogueNode] : null;
 
         // Error handling for missing node or image
-        if (!levelData) {
-            npcPortraitImage.src = '';
-            npcPortraitImage.style.display = 'none';
-            dialogueText.textContent = 'ERROR: No dialogue data for this level.';
-            replyOptionsContainer.innerHTML = '';
-            document.getElementById('npc-name').textContent = '';
+        if (!levelData || !nodeData) {
+            // Hide portrait and dialogue area completely
+            document.getElementById('dialogue-area').style.display = 'none';
             return;
-        }
-        if (!nodeData) {
-            npcPortraitImage.src = '';
-            npcPortraitImage.style.display = 'none';
-            dialogueText.textContent = 'ERROR: No dialogue node for this level.';
-            replyOptionsContainer.innerHTML = '';
-            document.getElementById('npc-name').textContent = '';
-            return;
+        } else {
+            document.getElementById('dialogue-area').style.display = '';
         }
         // Set image only if present
         if (nodeData.npcImage) {
