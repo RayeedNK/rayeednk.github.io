@@ -226,9 +226,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateLevelUI() {
-        const levelData = dialogueData[gameState.currentLevel];
-        const nodeData = levelData[gameState.currentDialogueNode];
+        let levelData = dialogueData[gameState.currentLevel];
+        let nodeData = levelData ? levelData[gameState.currentDialogueNode] : null;
 
+        // Error handling for missing node or image
+        if (!levelData) {
+            npcPortraitImage.src = '';
+            dialogueText.textContent = 'ERROR: No dialogue data for this level.';
+            replyOptionsContainer.innerHTML = '';
+            document.getElementById('npc-name').textContent = '';
+            return;
+        }
+        if (!nodeData) {
+            npcPortraitImage.src = '';
+            dialogueText.textContent = 'ERROR: No dialogue node for this level.';
+            replyOptionsContainer.innerHTML = '';
+            document.getElementById('npc-name').textContent = '';
+            return;
+        }
+        // Check if image exists (try to load, fallback to error)
+        npcPortraitImage.onerror = function() {
+            npcPortraitImage.src = '';
+            dialogueText.textContent = 'ERROR: NPC image not found: ' + nodeData.npcImage;
+        };
         npcPortraitImage.src = nodeData.npcImage;
         dialogueText.textContent = nodeData.text;
         replyOptionsContainer.innerHTML = '';
@@ -248,13 +268,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         npcNameDiv.textContent = name;
 
-        nodeData.options.forEach((option) => {
-            const button = document.createElement('button');
-            button.className = 'reply-btn';
-            button.textContent = option.text;
-            button.addEventListener('click', () => selectOption(option));
-            replyOptionsContainer.appendChild(button);
-        });
+        if (nodeData.options) {
+            nodeData.options.forEach((option) => {
+                const button = document.createElement('button');
+                button.className = 'reply-btn';
+                button.textContent = option.text;
+                button.addEventListener('click', () => selectOption(option));
+                replyOptionsContainer.appendChild(button);
+            });
+        }
     }
 
     function selectOption(option) {
