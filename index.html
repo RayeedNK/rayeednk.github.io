@@ -59,9 +59,17 @@
 
     <div id="level-screen" class="screen">
         <div id="stats-container">
-            <div class="stat-bar-container" style="width:100%;">
-                <p>Emotional Intelligence</p>
-                <div class="stat-bar"><div id="ei-bar" class="bar-fill ei"></div></div>
+            <div class="stat-bar-container">
+                <p>Empathy</p>
+                <div class="stat-bar"><div id="empathy-bar" class="bar-fill blue"></div></div>
+            </div>
+            <div class="stat-bar-container">
+                <p>Self-Awareness</p>
+                <div class="stat-bar"><div id="self-awareness-bar" class="bar-fill yellow"></div></div>
+            </div>
+            <div class="stat-bar-container">
+                <p>Regulation</p>
+                <div class="stat-bar"><div id="regulation-bar" class="bar-fill green"></div></div>
             </div>
         </div>
         <div id="dialogue-area">
@@ -129,15 +137,8 @@
     <!-- Distractions Modal -->
     <div id="distractions-modal" class="screen">
         <div class="overlay">
-            <h2>You may now proceed to the discussion. Wait and focus until you get further instructions from the presenter</h2>
-            <p id="flyer-progress">Flyer Progress: <span id="flyer-progress-value">0%</span></p>
-            <div id="distraction-options">
-                <button class="distraction-btn" data-option="call"> CONTINUE</button>
-                <button class="distraction-btn" data-option="text">2️⃣ Text Alp</button>
-                <button class="distraction-btn" data-option="nothing">3️⃣ Let Alp do his work”</button>
-            </div>
-            <p id="distraction-outcome" style="margin-top:20px;"></p>
-            <button id="distraction-continue-btn" class="hidden">Continue</button>
+            <h2>Please Proceed</h2>
+            <button id="distraction-continue-btn">Continue</button>
         </div>
     </div>
 

@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             distractionOutcome.textContent = '';
             distractionContinueBtn.classList.add('hidden');
             distractionOptions.querySelectorAll('button').forEach(btn => btn.disabled = false);
-            flyerProgressValue.textContent = `${gameState.flyerProgress}%`;
+            //flyerProgressValue.textContent = `${gameState.flyerProgress}%`;
             showScreen('distractions-modal');
     }
 
