@@ -236,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Error handling for missing node or image
         if (!levelData) {
             npcPortraitImage.src = '';
+            npcPortraitImage.style.display = 'none';
             dialogueText.textContent = 'ERROR: No dialogue data for this level.';
             replyOptionsContainer.innerHTML = '';
             document.getElementById('npc-name').textContent = '';
@@ -243,18 +244,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (!nodeData) {
             npcPortraitImage.src = '';
+            npcPortraitImage.style.display = 'none';
             dialogueText.textContent = 'ERROR: No dialogue node for this level.';
             replyOptionsContainer.innerHTML = '';
             document.getElementById('npc-name').textContent = '';
             return;
         }
-        // Check if image exists (try to load, fallback to error)
-        npcPortraitImage.onerror = function() {
+        // Set image only if present
+        if (nodeData.npcImage) {
+            npcPortraitImage.src = nodeData.npcImage;
+            npcPortraitImage.style.display = '';
+        } else {
             npcPortraitImage.src = '';
-            dialogueText.textContent = 'ERROR: NPC image not found: ' + nodeData.npcImage;
-        };
-        npcPortraitImage.src = nodeData.npcImage;
-        dialogueText.textContent = nodeData.text;
+            npcPortraitImage.style.display = 'none';
+        }
+        dialogueText.textContent = nodeData.text || '';
         replyOptionsContainer.innerHTML = '';
 
         // Set character name above dialogue box
