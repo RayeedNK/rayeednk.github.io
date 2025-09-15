@@ -161,7 +161,7 @@ body {
 .bar-fill.blue { background-color: #3498db; }
 .bar-fill.yellow { background-color: #f1c40f; }
 .bar-fill.green { background-color: #2ecc71; }
-.bar-fill.ei { background-color: #8e44ad; }
+.bar-fill.ei { background-color: #2980b9; }
 
 #dialogue-area {
     display: flex;

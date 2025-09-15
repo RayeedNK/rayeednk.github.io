@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM ELEMENTS ---
@@ -187,8 +186,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateStatsUI() {
         // Emotional Intelligence is sum of all three, max 300
+        const eiBar = document.getElementById('ei-bar');
         const totalEI = Math.max(0, Math.min(300, gameState.stats.empathy + gameState.stats.selfAwareness + gameState.stats.regulation));
-        eiBar.style.width = `${(totalEI/3)}%`;
+        // Make the bar update more visibly (scale to 150% max width)
+        if (eiBar) {
+            eiBar.style.width = `${(totalEI/2)}%`;
+        }
     }
 
     function startLevel(levelNumber, skipTaskDesc) {
