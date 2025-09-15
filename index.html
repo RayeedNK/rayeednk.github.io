@@ -59,18 +59,26 @@
 
     <div id="level-screen" class="screen">
         <div id="stats-container">
-            <div class="stat-bar-container" style="width:100%;">
-                <p>Emotional Intelligence</p>
-                <div class="stat-bar"><div id="ei-bar" class="bar-fill ei"></div></div>
+            <div class="stat-bar-container">
+                <p>Empathy</p>
+                <div class="stat-bar"><div id="empathy-bar" class="bar-fill blue"></div></div>
+            </div>
+            <div class="stat-bar-container">
+                <p>Self-Awareness</p>
+                <div class="stat-bar"><div id="self-awareness-bar" class="bar-fill yellow"></div></div>
+            </div>
+            <div class="stat-bar-container">
+                <p>Regulation</p>
+                <div class="stat-bar"><div id="regulation-bar" class="bar-fill green"></div></div>
             </div>
         </div>
         <div id="dialogue-area">
             <div class="npc-portrait">
-                <img id="npc-portrait-image" src="" alt="" style="display:none;" />
+                <img id="npc-portrait-image" src="assets/npc1_neutral.png" alt="NPC Portrait">
             </div>
             <div id="dialogue-box">
                 <div id="npc-name" style="font-size:1.3em;font-weight:bold;color:#ffc107;margin-bottom:8px;"></div>
-                <p id="dialogue-text"></p>
+                <p id="dialogue-text">Welcome, traveler. Let's begin.</p>
                 <div id="reply-options"></div>
             </div>
         </div>
@@ -92,7 +100,7 @@
             <p>Self-Awareness: <span id="final-self-awareness">0</span></p>
             <p>Regulation: <span id="final-regulation">0</span></p>
         </div>
-    <button id="play-again-button">Play Again</button>
+        <button id="proceed-final-btn">Proceed to Final Level</button>
     </div>
 
         <!-- Character Profiles Modal -->
@@ -106,7 +114,6 @@
             </div>
         </div>
 
-
             <!-- Task Description Modal -->
             <div id="task-desc-modal" class="screen">
                 <div class="profile-overlay">
@@ -115,17 +122,6 @@
                     </div>
                     <div id="task-desc-text"></div>
                     <button id="task-desc-continue-btn">Continue</button>
-                </div>
-            </div>
-
-            <!-- Pihla Message Modal (Level 1 Intro) -->
-            <div id="pihla-modal" class="screen">
-                <div class="profile-overlay">
-                    <div id="pihla-image-container" style="text-align:center;margin-bottom:18px;">
-                        <img id="pihla-image" src="assets/probba_member1.png" alt="Pihla" style="width:120px;height:120px;border-radius:50%;box-shadow:0 0 16px #3498db99;" />
-                    </div>
-                    <div id="pihla-message-text" style="margin-bottom:24px;font-size:1.15em;color:#ecf0f1;"></div>
-                    <button id="pihla-continue-btn">Continue</button>
                 </div>
             </div>
 
@@ -138,6 +134,20 @@
                 </div>
             </div>
 
+    <!-- Distractions Modal -->
+    <div id="distractions-modal" class="screen">
+        <div class="overlay">
+            <h2>After each level, You can either call Alp to take update for the flyer or not disturb him and let him work in peace</h2>
+            <p id="flyer-progress">Flyer Progress: <span id="flyer-progress-value">0%</span></p>
+            <div id="distraction-options">
+                <button class="distraction-btn" data-option="call">1️⃣ Call Alp directly in phone”</button>
+                <button class="distraction-btn" data-option="text">2️⃣ Text Alp</button>
+                <button class="distraction-btn" data-option="nothing">3️⃣ Let Alp do his work”</button>
+            </div>
+            <p id="distraction-outcome" style="margin-top:20px;"></p>
+            <button id="distraction-continue-btn" class="hidden">Continue</button>
+        </div>
+    </div>
 
         <!-- Level 7 Task Description Modal -->
         <div id="level7-modal" class="screen">

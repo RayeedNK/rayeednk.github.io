@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- PIHLA MODAL ---
-    const pihlaModal = document.getElementById('pihla-modal');
-    const pihlaMessageText = document.getElementById('pihla-message-text');
-    const pihlaContinueBtn = document.getElementById('pihla-continue-btn');
 
     // --- DOM ELEMENTS ---
     const screens = document.querySelectorAll('.screen');
@@ -34,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const levelCompleteMessage = document.getElementById('level-complete-message');
 
     // Stats Bar Elements
-    const eiBar = document.getElementById('ei-bar');
+    const empathyBar = document.getElementById('empathy-bar');
+    const selfAwarenessBar = document.getElementById('self-awareness-bar');
+    const regulationBar = document.getElementById('regulation-bar');
 
     // Final Score Elements
     const finalEmpathy = document.getElementById('final-empathy');
@@ -189,9 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateStatsUI() {
-    // Emotional Intelligence is sum of all three, max 300
-    const totalEI = Math.max(0, Math.min(300, gameState.stats.empathy + gameState.stats.selfAwareness + gameState.stats.regulation));
-    eiBar.style.width = `${(totalEI/3)}%`;
+        empathyBar.style.width = `${gameState.stats.empathy}%`;
+        selfAwarenessBar.style.width = `${gameState.stats.selfAwareness}%`;
+        regulationBar.style.width = `${gameState.stats.regulation}%`;
     }
 
     function startLevel(levelNumber, skipTaskDesc) {
@@ -230,40 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateLevelUI() {
-        let levelData = dialogueData[gameState.currentLevel];
-        let nodeData = levelData ? levelData[gameState.currentDialogueNode] : null;
+        const levelData = dialogueData[gameState.currentLevel];
+        const nodeData = levelData[gameState.currentDialogueNode];
 
-        // Error handling for missing node or image
-        if (!levelData || !nodeData) {
-            // Hide portrait and dialogue area completely
-            document.getElementById('dialogue-area').style.display = 'none';
-            return;
-        }
-        // Always show dialogue area for valid node
-        document.getElementById('dialogue-area').style.display = '';
-
-        // Set image only if present, fallback to default if missing
-        if (nodeData.npcImage) {
-            npcPortraitImage.onerror = function() {
-                npcPortraitImage.src = 'assets/alp_neutral.png'; // fallback to Alp neutral
-            };
-            npcPortraitImage.src = nodeData.npcImage;
-            npcPortraitImage.style.display = '';
-        } else {
-            npcPortraitImage.src = 'assets/alp_neutral.png';
-            npcPortraitImage.style.display = '';
-        }
-        dialogueText.textContent = nodeData.text || '';
-        replyOptionsContainer.innerHTML = '';
-        // Set image only if present
-        if (nodeData.npcImage) {
-            npcPortraitImage.src = nodeData.npcImage;
-            npcPortraitImage.style.display = '';
-        } else {
-            npcPortraitImage.src = '';
-            npcPortraitImage.style.display = 'none';
-        }
-        dialogueText.textContent = nodeData.text || '';
+        npcPortraitImage.src = nodeData.npcImage;
+        dialogueText.textContent = nodeData.text;
         replyOptionsContainer.innerHTML = '';
 
         // Set character name above dialogue box
@@ -281,15 +250,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         npcNameDiv.textContent = name;
 
-        if (nodeData.options) {
-            nodeData.options.forEach((option) => {
-                const button = document.createElement('button');
-                button.className = 'reply-btn';
-                button.textContent = option.text;
-                button.addEventListener('click', () => selectOption(option));
-                replyOptionsContainer.appendChild(button);
-            });
-        }
+        nodeData.options.forEach((option) => {
+            const button = document.createElement('button');
+            button.className = 'reply-btn';
+            button.textContent = option.text;
+            button.addEventListener('click', () => selectOption(option));
+            replyOptionsContainer.appendChild(button);
+        });
     }
 
     function selectOption(option) {
@@ -322,9 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function showFinalScore() {
-    finalEmpathy.textContent = gameState.stats.empathy;
-    finalSelfAwareness.textContent = gameState.stats.selfAwareness;
-    finalRegulation.textContent = gameState.stats.regulation;
+        finalEmpathy.textContent = gameState.stats.empathy;
+        finalSelfAwareness.textContent = gameState.stats.selfAwareness;
+        finalRegulation.textContent = gameState.stats.regulation;
         showScreen('final-score-screen');
     }
     function showTaskDescription(levelNumber) {
@@ -363,19 +330,45 @@ document.addEventListener('DOMContentLoaded', () => {
             showScreen('wait-focus-modal');
         });
     taskDescContinueBtn.addEventListener('click', () => {
-        // Always start the correct level and show its dialogue
-        gameState.currentLevel = gameState.nextLevelToStart;
-        gameState.currentDialogueNode = 'start';
-        // Show character profiles before Level 2
-        if (gameState.currentLevel === 2) {
-            gameState.profileIndex = 0;
-            showCharacterProfile();
-        } else {
-            showScreen('level-screen');
-            updateLevelUI();
-        }
+        startLevel(gameState.nextLevelToStart, true);
     });    
 
+        // Distractions Modal Logic
+        distractionOptions.addEventListener('click', (e) => {
+            if (e.target.classList.contains('distraction-btn')) {
+                distractionOptions.querySelectorAll('button').forEach(btn => btn.disabled = true);
+                let outcome = '';
+                let scoreChange = { empathy: 0, selfAwareness: 0, regulation: 0 };
+                switch (e.target.dataset.option) {
+                    case 'call':
+                        outcome = 'He returns to work immediately.';
+                        scoreChange = { empathy: 1, selfAwareness: 1, regulation: 0 };
+                        gameState.flyerProgress = Math.min(100, gameState.flyerProgress + 20);
+                        break;
+                    case 'text':
+                        outcome = 'He ignores text, work slows.';
+                        scoreChange = { empathy: 1, selfAwareness: 0, regulation: -1 };
+                        gameState.flyerProgress = Math.max(0, gameState.flyerProgress + 10);
+                        break;
+                    case 'nothing':
+                        outcome = 'Task delays; he feels left out.';
+                        scoreChange = { empathy: 0, selfAwareness: -1, regulation: 1 };
+                        gameState.flyerProgress = Math.max(0, gameState.flyerProgress + 5);
+                        break;
+                }
+                gameState.stats.empathy = Math.max(0, Math.min(100, gameState.stats.empathy + scoreChange.empathy));
+                gameState.stats.selfAwareness = Math.max(0, Math.min(100, gameState.stats.selfAwareness + scoreChange.selfAwareness));
+                gameState.stats.regulation = Math.max(0, Math.min(100, gameState.stats.regulation + scoreChange.regulation));
+                updateStatsUI();
+                flyerProgressValue.textContent = `${gameState.flyerProgress}%`;
+                distractionOutcome.textContent = outcome + `\n\nScore: Empathy ${scoreChange.empathy > 0 ? '+1' : scoreChange.empathy < 0 ? '-1' : ''}, Self-awareness ${scoreChange.selfAwareness > 0 ? '+1' : scoreChange.selfAwareness < 0 ? '-1' : ''}, Regulation ${scoreChange.regulation > 0 ? '+1' : scoreChange.regulation < 0 ? '-1' : ''}`;
+                distractionContinueBtn.classList.remove('hidden');
+            }
+        });
+
+        distractionContinueBtn.addEventListener('click', () => {
+            showScreen('wait-focus-modal');
+        });
 
         // Wait and Focus modal logic
         const waitFocusContinueBtn = document.getElementById('wait-focus-continue-btn');
@@ -387,40 +380,23 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.addEventListener('click', () => {
             if (icon.classList.contains('unlocked')) {
                 const level = parseInt(icon.dataset.level);
-                if (level === 1) {
-                    // Show Pihla modal first for Level 1
-                    pihlaMessageText.innerHTML = 'Hi, I am Pihla the Communications Coordinator. Alp Iyol is your Arab friend from the Middle East. He has been given the task to draft a flyer for Running BaBa food checkpoints. However, the initial draft looks a bit unusual for some people as the food stalls are listed from right to left. Your job is to solve the situation.';
-                    pihlaModal.classList.add('active');
-                    // Set background for Pihla modal
-                    pihlaModal.style.backgroundImage = "url('assets/scenery level 1.jpg')";
-                    pihlaModal.style.backgroundSize = "cover";
-                    pihlaModal.style.backgroundPosition = "center";
-                    // When continue is pressed, go to Alp dialogue
-                    pihlaContinueBtn.onclick = function() {
-                        pihlaModal.classList.remove('active');
-                        gameState.currentLevel = 1;
-                        gameState.currentDialogueNode = 'start';
-                        showScreen('level-screen');
-                        updateLevelUI();
-                    };
-                } else {
-                    showTaskDescription(level);
-                    // Set mission screen background to match level
-                    const taskDescModal = document.getElementById('task-desc-modal');
-                    let bgImg = '';
-                    switch (level) {
-                        case 2: bgImg = "assets/scenery level 2.jpg"; break;
-                        case 3: bgImg = "assets/mission level 3.jpg"; break;
-                        case 4: bgImg = "assets/scenery level 4.jpg"; break;
-                        case 5: bgImg = "assets/scenery level 5.jpg"; break;
-                        case 6: bgImg = "assets/scenery level 6.jpg"; break;
-                        case 7: bgImg = "assets/scenery1.jpg"; break;
-                        default: bgImg = "assets/scenery1.jpg";
-                    }
-                    taskDescModal.style.backgroundImage = `url('${bgImg}')`;
-                    taskDescModal.style.backgroundSize = "cover";
-                    taskDescModal.style.backgroundPosition = "center";
+                showTaskDescription(level);
+                // Set mission screen background to match level
+                const taskDescModal = document.getElementById('task-desc-modal');
+                let bgImg = '';
+                switch (level) {
+                    case 1: bgImg = "assets/scenery level 1.jpg"; break;
+                    case 2: bgImg = "assets/scenery level 2.jpg"; break;
+                    case 3: bgImg = "assets/mission level 3.jpg"; break;
+                    case 4: bgImg = "assets/scenery level 4.jpg"; break;
+                    case 5: bgImg = "assets/scenery level 5.jpg"; break;
+                    case 6: bgImg = "assets/scenery level 6.jpg"; break;
+                    case 7: bgImg = "assets/scenery1.jpg"; break;
+                    default: bgImg = "assets/scenery1.jpg";
                 }
+                taskDescModal.style.backgroundImage = `url('${bgImg}')`;
+                taskDescModal.style.backgroundSize = "cover";
+                taskDescModal.style.backgroundPosition = "center";
             }
         });
     });
