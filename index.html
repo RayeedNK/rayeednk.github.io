@@ -1,164 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
     <title>Mikkeli Run</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="opening-screen" class="screen active">
-        <video autoplay muted loop id="bg-video" playsinline>
-            <source src="assets/background.mp4" type="video/mp4">
-        </video>
-        <div class="overlay">
-            <img id="start-button" src="assets/startgame.png" alt="Start Game">
-        </div>
+      <video autoplay muted loop id="bg-video" playsinline>
+        <source src="assets/background.mp4" type="video/mp4" />
+      </video>
+      <div class="overlay">
+        <img
+          id="start-button"
+          src="assets/startgame.png"
+          alt="Start Game" />
+      </div>
     </div>
 
-        <!-- Probba President Intro Screen -->
-        <div id="president-intro-screen" class="screen" 
-            style="position: relative; 
-                    background-image:url('assets/President_Background.jpeg');
-                    background-size:cover;
-                    background-position:center;
-                    overflow:hidden;">
+    <!-- Probba President Intro Screen -->
+    <div
+      id="president-intro-screen"
+      class="screen"
+      style="
+        position: relative;
+        background-image: url('assets/President_Background.jpeg');
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+      ">
+      <!-- Overlay (dark + blur) -->
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.45); /* dark overlay */
+          backdrop-filter: blur(4px); /* blur effect */
+          z-index: 1;
+        "></div>
 
-            <!-- Overlay (dark + blur) -->
-            <div style="position:absolute;
-                        top:0;left:0;width:100%;height:100%;
-                        background:rgba(0,0,0,0.45);   /* dark overlay */
-                        backdrop-filter: blur(4px);     /* blur effect */
-                        z-index:1;"></div>
-
-    <!-- Content -->
-            <div class="profile-overlay" style="position:relative; z-index:2; text-align:center;">
-                <img src="assets/president.jpeg" 
-                    alt="Probba President" 
-                    style="width:160px;height:160px;border-radius:50%;margin-bottom:20px;box-shadow:0 0 24px #3498db99;" />
-                <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">
-                    <b>Congratulations on being selected as Probba's new Event Coordinator!</b><br>
-                    I am Patrik Wilska, the President of Probba, and I need your help with the upcoming Running BaBa event.
-                    You will be given 7 tasks to complete in different locations. I’m very busy so I have to go now, but take this map and it will tell you where to go. Just remember to treat each task with care and I’m sure you will do great.<i>Smell ya later!</i><br>
-                </div>
-                <button id="president-continue-btn">Continue</button>
-            </div>
+      <!-- Content -->
+      <div
+        class="profile-overlay"
+        style="position: relative; z-index: 2; text-align: center">
+        <img
+          src="assets/president.jpeg"
+          alt="Probba President"
+          style="
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 24px #3498db99;
+          " />
+        <div
+          style="
+            font-size: 1.2em;
+            color: #ecf0f1;
+            margin-bottom: 30px;
+          ">
+          <b
+            >Congratulations on being selected as Probba's new Event
+            Coordinator!</b
+          ><br /><br />
+          I am Patrik Wilska, the President of Probba, and I need your
+          help with the upcoming Running BaBa event. You will be given
+          7 tasks to complete in different locations. I’m very busy so
+          I have to go now, but take this map and it will tell you
+          where to go. Just remember to treat each task with care and
+          I’m sure you will do great. <i>Smell ya later!</i><br />
         </div>
-
+        <button id="president-continue-btn">Continue</button>
+      </div>
+    </div>
 
     <div id="map-screen" class="screen">
-           <div class="level-icon" id="level-1" data-level="1"><span>1</span></div>
-           <div class="level-icon" id="level-2" data-level="2"><span>2</span></div>
-           <div class="level-icon" id="level-3" data-level="3"><span>3</span></div>
-           <div class="level-icon" id="level-4" data-level="4"><span>4</span></div>
-           <div class="level-icon" id="level-5" data-level="5"><span>5</span></div>
-           <div class="level-icon" id="level-6" data-level="6"><span>6</span></div>
-           <div class="level-icon" id="level-7" data-level="7"><span>7</span></div>
+      <div class="level-icon" id="level-1" data-level="1">
+        <span>1</span>
+      </div>
+      <div class="level-icon" id="level-2" data-level="2">
+        <span>2</span>
+      </div>
+      <div class="level-icon" id="level-3" data-level="3">
+        <span>3</span>
+      </div>
+      <div class="level-icon" id="level-4" data-level="4">
+        <span>4</span>
+      </div>
+      <div class="level-icon" id="level-5" data-level="5">
+        <span>5</span>
+      </div>
+      <div class="level-icon" id="level-6" data-level="6">
+        <span>6</span>
+      </div>
+      <div class="level-icon" id="level-7" data-level="7">
+        <span>7</span>
+      </div>
     </div>
 
     <div id="level-screen" class="screen">
-        <div id="stats-container">
-            <div class="stat-bar-container">
-                <p>Empathy</p>
-                <div class="stat-bar"><div id="empathy-bar" class="bar-fill blue"></div></div>
-            </div>
-            <div class="stat-bar-container">
-                <p>Self-Awareness</p>
-                <div class="stat-bar"><div id="self-awareness-bar" class="bar-fill yellow"></div></div>
-            </div>
-            <div class="stat-bar-container">
-                <p>Regulation</p>
-                <div class="stat-bar"><div id="regulation-bar" class="bar-fill green"></div></div>
-            </div>
+      <div id="stats-container">
+        <div class="stat-bar-container">
+          <p>Empathy</p>
+          <div class="stat-bar">
+            <div id="empathy-bar" class="bar-fill blue"></div>
+          </div>
         </div>
-        <div id="dialogue-area">
-            <div class="npc-portrait">
-                <img id="npc-portrait-image" src="assets/npc1_neutral.png" alt="NPC Portrait">
-            </div>
-            <div id="dialogue-box">
-                <div id="npc-name" style="font-size:1.3em;font-weight:bold;color:#ffc107;margin-bottom:8px;"></div>
-                <p id="dialogue-text">Welcome, traveler. Let's begin.</p>
-                <div id="reply-options"></div>
-            </div>
+        <div class="stat-bar-container">
+          <p>Self-Awareness</p>
+          <div class="stat-bar">
+            <div
+              id="self-awareness-bar"
+              class="bar-fill yellow"></div>
+          </div>
         </div>
-        <div id="level-complete-message" class="hidden">Level Complete!</div>
+        <div class="stat-bar-container">
+          <p>Regulation</p>
+          <div class="stat-bar">
+            <div id="regulation-bar" class="bar-fill green"></div>
+          </div>
+        </div>
+      </div>
+      <div id="dialogue-area">
+        <div class="npc-portrait">
+          <img
+            id="npc-portrait-image"
+            src="assets/npc1_neutral.png"
+            alt="NPC Portrait" />
+        </div>
+        <div id="dialogue-box">
+          <div
+            id="npc-name"
+            style="
+              font-size: 1.3em;
+              font-weight: bold;
+              color: #ffc107;
+              margin-bottom: 8px;
+            "></div>
+          <p id="dialogue-text">Welcome, traveler. Let's begin.</p>
+          <div id="reply-options"></div>
+        </div>
+      </div>
+      <div id="level-complete-message" class="hidden">
+        Level Complete!
+      </div>
     </div>
-    
+
     <div id="transition-screen" class="screen">
-        <div class="overlay">
-            <h2>Level Complete!</h2>
-            <p>Your choices have been recorded.</p>
-            <button id="continue-button">Continue</button>
-        </div>
+      <div class="overlay">
+        <h2>Level Complete!</h2>
+        <p>Your choices have been recorded.</p>
+        <button id="continue-button">Continue</button>
+      </div>
     </div>
 
     <div id="final-score-screen" class="screen">
-        <h2>Final Score</h2>
-        <div class="final-stats-display">
-            <p>Empathy: <span id="final-empathy">0</span></p>
-            <p>Self-Awareness: <span id="final-self-awareness">0</span></p>
-            <p>Regulation: <span id="final-regulation">0</span></p>
-        </div>
-            <button id="play-again-final-btn">Play Again</button>
+      <h2>Final Score</h2>
+      <div class="final-stats-display">
+        <p>Empathy: <span id="final-empathy">0</span></p>
+        <p>
+          Self-Awareness: <span id="final-self-awareness">0</span>
+        </p>
+        <p>Regulation: <span id="final-regulation">0</span></p>
+      </div>
+      <button id="play-again-final-btn">Play Again</button>
     </div>
 
-        <!-- Character Profiles Modal -->
-        <div id="character-profiles-modal" class="screen">
-            <div class="profile-overlay">
-                <div id="profile-image-container">
-                    <img id="profile-image" src="" alt="Character Profile" />
-                </div>
-                <div id="profile-description"></div>
-                <button id="profile-continue-btn">Continue</button>
-            </div>
+    <!-- Character Profiles Modal -->
+    <div id="character-profiles-modal" class="screen">
+      <div class="profile-overlay">
+        <div id="profile-image-container">
+          <img id="profile-image" src="" alt="Character Profile" />
         </div>
+        <div id="profile-description"></div>
+        <button id="profile-continue-btn">Continue</button>
+      </div>
+    </div>
 
-            <!-- Task Description Modal -->
-            <div id="task-desc-modal" class="screen">
-                <div class="profile-overlay">
-                    <div id="task-desc-image-container">
-                        <img id="task-desc-image" src="" alt="Task Character" />
-                    </div>
-                    <div id="task-desc-text"></div>
-                    <button id="task-desc-continue-btn">Continue</button>
-                </div>
-            </div>
+    <!-- Task Description Modal -->
+    <div id="task-desc-modal" class="screen">
+      <div class="profile-overlay">
+        <div id="task-desc-image-container">
+          <img id="task-desc-image" src="" alt="Task Character" />
+        </div>
+        <div id="task-desc-text"></div>
+        <button id="task-desc-continue-btn">Continue</button>
+      </div>
+    </div>
 
-            <!-- Wait and Focus Modal -->
-            <div id="wait-focus-modal" class="screen">
-                <div class="profile-overlay">
-                    <h2 style="color:#ffc107;margin-bottom:20px;">Wait and Focus</h2>
-                    <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">Do not Press Continue, Wait and Focus on the presentation for now.</div>
-                    <button id="wait-focus-continue-btn">Continue</button>
-                </div>
-            </div>
+    <!-- Wait and Focus Modal -->
+    <div id="wait-focus-modal" class="screen">
+      <div class="profile-overlay">
+        <h2 style="color: #ffc107; margin-bottom: 20px">
+          Wait and Focus
+        </h2>
+        <div
+          style="
+            font-size: 1.2em;
+            color: #ecf0f1;
+            margin-bottom: 30px;
+          ">
+          Do not Press Continue, Wait and Focus on the presentation
+          for now.
+        </div>
+        <button id="wait-focus-continue-btn">Continue</button>
+      </div>
+    </div>
 
     <!-- Distractions Modal -->
     <div id="distractions-modal" class="screen">
-        <div class="overlay">
-            <h2>Please Proceed</h2>
-            <button id="distraction-continue-btn">Continue</button>
-        </div>
+      <div class="overlay">
+        <h2>Please Proceed</h2>
+        <button id="distraction-continue-btn">Continue</button>
+      </div>
     </div>
 
-        <!-- Level 7 Task Description Modal -->
-        <div id="level7-modal" class="screen">
-        <!-- Error 408 Final Screen -->
-        <div id="error408-screen" class="screen">
-            <div class="profile-overlay">
-                <h2 style="color:#ffc107;margin-bottom:20px;">Error 408</h2>
-                <div style="font-size:1.2em;color:#ecf0f1;margin-bottom:30px;">Classroom not loaded properly, characters escaped matrix....</div>
-                <button id="play-again-final-btn">Play Again</button>
-            </div>
+    <!-- Level 7 Task Description Modal -->
+    <div id="level7-modal" class="screen">
+      <!-- Error 408 Final Screen -->
+      <div id="error408-screen" class="screen">
+        <div class="profile-overlay">
+          <h2 style="color: #ffc107; margin-bottom: 20px">
+            Error 408
+          </h2>
+          <div
+            style="
+              font-size: 1.2em;
+              color: #ecf0f1;
+              margin-bottom: 30px;
+            ">
+            Classroom not loaded properly, characters escaped
+            matrix....
+          </div>
+          <button id="play-again-final-btn">Play Again</button>
         </div>
-            <div class="profile-overlay">
-                <div style="font-size:1.3em;color:#ecf0f1;margin-bottom:30px;">Hunter and Ayush Fighting in Class</div>
-                <button id="level7-continue-btn" disabled style="opacity:0.5;cursor:not-allowed;">Continue</button>
-            </div>
+      </div>
+      <div class="profile-overlay">
+        <div
+          style="
+            font-size: 1.3em;
+            color: #ecf0f1;
+            margin-bottom: 30px;
+          ">
+          Hunter and Ayush Fighting in Class
         </div>
+        <button
+          id="level7-continue-btn"
+          disabled
+          style="opacity: 0.5; cursor: not-allowed">
+          Continue
+        </button>
+      </div>
+    </div>
 
     <script src="assets/dialogue.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
