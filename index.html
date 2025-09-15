@@ -137,9 +137,12 @@
     <!-- Distractions Modal -->
     <div id="distractions-modal" class="screen">
         <div class="overlay">
-            <h2>You may now proceed to the discussion session and Wait for instructions from the presenters</h2>
+            <h2>After each level, You can either call Alp to take update for the flyer or not disturb him and let him work in peace</h2>
+            <p id="flyer-progress">Flyer Progress: <span id="flyer-progress-value">0%</span></p>
             <div id="distraction-options">
-                <button class="distraction-btn" data-option="call">Continue</button>
+                <button class="distraction-btn" data-option="call">1️⃣ Call Alp directly in phone”</button>
+                <button class="distraction-btn" data-option="text">2️⃣ Text Alp</button>
+                <button class="distraction-btn" data-option="nothing">3️⃣ Let Alp do his work”</button>
             </div>
             <p id="distraction-outcome" style="margin-top:20px;"></p>
             <button id="distraction-continue-btn" class="hidden">Continue</button>
