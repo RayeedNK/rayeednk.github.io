@@ -30,10 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const replyOptionsContainer = document.getElementById('reply-options');
     const levelCompleteMessage = document.getElementById('level-complete-message');
 
-    // Stats Bar Elements
-    const empathyBar = document.getElementById('empathy-bar');
-    const selfAwarenessBar = document.getElementById('self-awareness-bar');
-    const regulationBar = document.getElementById('regulation-bar');
+    // Stats Bar Element
+    const eiBar = document.getElementById('ei-bar');
 
     // Final Score Elements
     const finalEmpathy = document.getElementById('final-empathy');
@@ -188,9 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateStatsUI() {
-        empathyBar.style.width = `${gameState.stats.empathy}%`;
-        selfAwarenessBar.style.width = `${gameState.stats.selfAwareness}%`;
-        regulationBar.style.width = `${gameState.stats.regulation}%`;
+        // Emotional Intelligence is sum of all three, max 300
+        const totalEI = Math.max(0, Math.min(300, gameState.stats.empathy + gameState.stats.selfAwareness + gameState.stats.regulation));
+        eiBar.style.width = `${(totalEI/3)}%`;
     }
 
     function startLevel(levelNumber, skipTaskDesc) {
