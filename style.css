@@ -209,14 +209,14 @@ body {
   flex-direction: row;
 }
 .npc-portrait {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 5px solid #3498db;
+  width: 450px;
+  height: 450px;
+  border: none
   box-shadow: 0 0 20px rgba(52, 152, 219, 0.7);
   overflow: hidden;
   margin-right: 20px;
   flex-shrink: 0;
+  margin-top: -100px;
 }
 .npc-portrait img {
   width: 100%;
@@ -469,9 +469,9 @@ body {
     justify-content: center;
   }
   .npc-portrait {
-    width: 150px;
-    height: 150px;
-    margin: 0 0 15px 0;
+    width: 300px;
+    height: 300px;
+    margin: 0 0 0px 0;
   }
   #dialogue-box {
     width: 100%;
