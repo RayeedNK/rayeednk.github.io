@@ -89,9 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLevel: 0,
         levelStatus: ['unlocked', 'locked', 'locked', 'locked','locked','locked','locked'],
         stats: {
-            empathy: 50,
-            selfAwareness: 50,
-            regulation: 50
+            empathy: 30,
+            selfAwareness: 30,
+            regulation: 30
         },
         currentDialogueNode: null,
         flyerProgress: 0,
