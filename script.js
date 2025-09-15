@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- PIHLA MODAL ---
+    const pihlaModal = document.getElementById('pihla-modal');
+    const pihlaMessageText = document.getElementById('pihla-message-text');
+    const pihlaContinueBtn = document.getElementById('pihla-continue-btn');
 
     // --- DOM ELEMENTS ---
     const screens = document.querySelectorAll('.screen');
@@ -374,23 +378,40 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.addEventListener('click', () => {
             if (icon.classList.contains('unlocked')) {
                 const level = parseInt(icon.dataset.level);
-                showTaskDescription(level);
-                // Set mission screen background to match level
-                const taskDescModal = document.getElementById('task-desc-modal');
-                let bgImg = '';
-                switch (level) {
-                    case 1: bgImg = "assets/scenery level 1.jpg"; break;
-                    case 2: bgImg = "assets/scenery level 2.jpg"; break;
-                    case 3: bgImg = "assets/mission level 3.jpg"; break;
-                    case 4: bgImg = "assets/scenery level 4.jpg"; break;
-                    case 5: bgImg = "assets/scenery level 5.jpg"; break;
-                    case 6: bgImg = "assets/scenery level 6.jpg"; break;
-                    case 7: bgImg = "assets/scenery1.jpg"; break;
-                    default: bgImg = "assets/scenery1.jpg";
+                if (level === 1) {
+                    // Show Pihla modal first for Level 1
+                    pihlaMessageText.innerHTML = 'Hi, I am Pihla the Communications Coordinator. Alp Iyol is your Arab friend from the Middle East. He has been given the task to draft a flyer for Running BaBa food checkpoints. However, the initial draft looks a bit unusual for some people as the food stalls are listed from right to left. Your job is to solve the situation.';
+                    pihlaModal.classList.add('active');
+                    // Set background for Pihla modal
+                    pihlaModal.style.backgroundImage = "url('assets/scenery level 1.jpg')";
+                    pihlaModal.style.backgroundSize = "cover";
+                    pihlaModal.style.backgroundPosition = "center";
+                    // When continue is pressed, go to Alp dialogue
+                    pihlaContinueBtn.onclick = function() {
+                        pihlaModal.classList.remove('active');
+                        gameState.currentLevel = 1;
+                        gameState.currentDialogueNode = 'start';
+                        showScreen('level-screen');
+                        updateLevelUI();
+                    };
+                } else {
+                    showTaskDescription(level);
+                    // Set mission screen background to match level
+                    const taskDescModal = document.getElementById('task-desc-modal');
+                    let bgImg = '';
+                    switch (level) {
+                        case 2: bgImg = "assets/scenery level 2.jpg"; break;
+                        case 3: bgImg = "assets/mission level 3.jpg"; break;
+                        case 4: bgImg = "assets/scenery level 4.jpg"; break;
+                        case 5: bgImg = "assets/scenery level 5.jpg"; break;
+                        case 6: bgImg = "assets/scenery level 6.jpg"; break;
+                        case 7: bgImg = "assets/scenery1.jpg"; break;
+                        default: bgImg = "assets/scenery1.jpg";
+                    }
+                    taskDescModal.style.backgroundImage = `url('${bgImg}')`;
+                    taskDescModal.style.backgroundSize = "cover";
+                    taskDescModal.style.backgroundPosition = "center";
                 }
-                taskDescModal.style.backgroundImage = `url('${bgImg}')`;
-                taskDescModal.style.backgroundSize = "cover";
-                taskDescModal.style.backgroundPosition = "center";
             }
         });
     });
