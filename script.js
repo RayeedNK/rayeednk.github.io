@@ -238,9 +238,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide portrait and dialogue area completely
             document.getElementById('dialogue-area').style.display = 'none';
             return;
-        } else {
-            document.getElementById('dialogue-area').style.display = '';
         }
+        // Always show dialogue area for valid node
+        document.getElementById('dialogue-area').style.display = '';
+
+        // Set image only if present, fallback to default if missing
+        if (nodeData.npcImage) {
+            npcPortraitImage.onerror = function() {
+                npcPortraitImage.src = 'assets/alp_neutral.png'; // fallback to Alp neutral
+            };
+            npcPortraitImage.src = nodeData.npcImage;
+            npcPortraitImage.style.display = '';
+        } else {
+            npcPortraitImage.src = 'assets/alp_neutral.png';
+            npcPortraitImage.style.display = '';
+        }
+        dialogueText.textContent = nodeData.text || '';
+        replyOptionsContainer.innerHTML = '';
         // Set image only if present
         if (nodeData.npcImage) {
             npcPortraitImage.src = nodeData.npcImage;
