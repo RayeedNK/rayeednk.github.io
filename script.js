@@ -30,9 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const levelCompleteMessage = document.getElementById('level-complete-message');
 
     // Stats Bar Elements
-    const empathyBar = document.getElementById('empathy-bar');
-    const selfAwarenessBar = document.getElementById('self-awareness-bar');
-    const regulationBar = document.getElementById('regulation-bar');
+    const eiBar = document.getElementById('ei-bar');
 
     // Final Score Elements
     const finalEmpathy = document.getElementById('final-empathy');
@@ -187,9 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateStatsUI() {
-        empathyBar.style.width = `${gameState.stats.empathy}%`;
-        selfAwarenessBar.style.width = `${gameState.stats.selfAwareness}%`;
-        regulationBar.style.width = `${gameState.stats.regulation}%`;
+    // Emotional Intelligence is sum of all three, max 300
+    const totalEI = Math.max(0, Math.min(300, gameState.stats.empathy + gameState.stats.selfAwareness + gameState.stats.regulation));
+    eiBar.style.width = `${(totalEI/3)}%`;
     }
 
     function startLevel(levelNumber, skipTaskDesc) {
@@ -289,9 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function showFinalScore() {
-        finalEmpathy.textContent = gameState.stats.empathy;
-        finalSelfAwareness.textContent = gameState.stats.selfAwareness;
-        finalRegulation.textContent = gameState.stats.regulation;
+    finalEmpathy.textContent = gameState.stats.empathy;
+    finalSelfAwareness.textContent = gameState.stats.selfAwareness;
+    finalRegulation.textContent = gameState.stats.regulation;
         showScreen('final-score-screen');
     }
     function showTaskDescription(levelNumber) {
@@ -333,42 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startLevel(gameState.nextLevelToStart, true);
     });    
 
-        // Distractions Modal Logic
-        distractionOptions.addEventListener('click', (e) => {
-            if (e.target.classList.contains('distraction-btn')) {
-                distractionOptions.querySelectorAll('button').forEach(btn => btn.disabled = true);
-                let outcome = '';
-                let scoreChange = { empathy: 0, selfAwareness: 0, regulation: 0 };
-                switch (e.target.dataset.option) {
-                    case 'call':
-                        outcome = 'He returns to work immediately.';
-                        scoreChange = { empathy: 1, selfAwareness: 1, regulation: 0 };
-                        gameState.flyerProgress = Math.min(100, gameState.flyerProgress + 20);
-                        break;
-                    case 'text':
-                        outcome = 'He ignores text, work slows.';
-                        scoreChange = { empathy: 1, selfAwareness: 0, regulation: -1 };
-                        gameState.flyerProgress = Math.max(0, gameState.flyerProgress + 10);
-                        break;
-                    case 'nothing':
-                        outcome = 'Task delays; he feels left out.';
-                        scoreChange = { empathy: 0, selfAwareness: -1, regulation: 1 };
-                        gameState.flyerProgress = Math.max(0, gameState.flyerProgress + 5);
-                        break;
-                }
-                gameState.stats.empathy = Math.max(0, Math.min(100, gameState.stats.empathy + scoreChange.empathy));
-                gameState.stats.selfAwareness = Math.max(0, Math.min(100, gameState.stats.selfAwareness + scoreChange.selfAwareness));
-                gameState.stats.regulation = Math.max(0, Math.min(100, gameState.stats.regulation + scoreChange.regulation));
-                updateStatsUI();
-                flyerProgressValue.textContent = `${gameState.flyerProgress}%`;
-                distractionOutcome.textContent = outcome + `\n\nScore: Empathy ${scoreChange.empathy > 0 ? '+1' : scoreChange.empathy < 0 ? '-1' : ''}, Self-awareness ${scoreChange.selfAwareness > 0 ? '+1' : scoreChange.selfAwareness < 0 ? '-1' : ''}, Regulation ${scoreChange.regulation > 0 ? '+1' : scoreChange.regulation < 0 ? '-1' : ''}`;
-                distractionContinueBtn.classList.remove('hidden');
-            }
-        });
-
-        distractionContinueBtn.addEventListener('click', () => {
-            showScreen('wait-focus-modal');
-        });
 
         // Wait and Focus modal logic
         const waitFocusContinueBtn = document.getElementById('wait-focus-continue-btn');

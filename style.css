@@ -159,8 +159,7 @@ body {
     transition: width 0.5s ease-in-out;
 }
 .bar-fill.blue { background-color: #3498db; }
-.bar-fill.yellow { background-color: #f1c40f; }
-.bar-fill.green { background-color: #2ecc71; }
+.bar-fill.ei { background: linear-gradient(90deg, #3498db 0%, #f1c40f 50%, #2ecc71 100%); }
 
 #dialogue-area {
     display: flex;
@@ -330,60 +329,6 @@ body {
          pointer-events: auto;
 }
 
-/* --- Distractions Modal --- */
-#distractions-modal {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(44, 62, 80, 0.95);
-    z-index: 10;
-}
-#distractions-modal .overlay {
-    text-align: center;
-    background: rgba(0,0,0,0.2);
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-#distraction-options {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin: 30px 0 10px 0;
-}
-.distraction-btn {
-    padding: 18px;
-    font-size: 1.2em;
-    border-radius: 8px;
-    border: 2px solid #7f8c8d;
-    background: #34495e;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
-}
-.distraction-btn:disabled {
-    background: #7f8c8d;
-    cursor: not-allowed;
-    border-color: #aaa;
-}
-.distraction-btn:hover:not(:disabled) {
-    background: #4a6fa5;
-    border-color: #3498db;
-}
-#distraction-continue-btn {
-    margin-top: 25px;
-    font-size: 1.2em;
-    padding: 12px 28px;
-    border-radius: 8px;
-    border: none;
-    background: #28a745;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-#distraction-continue-btn:hover {
-    background: #218838;
-}
 
 /******************************************/
 /* MOBILE OPTIMIZATIONS (Portrait)      */
