@@ -162,8 +162,9 @@ body {
 }
 #stats-container {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  /* justify-content: space-around; */
+  margin: auto;
+  width: 80%;
   margin-bottom: 20px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.4);
@@ -171,7 +172,7 @@ body {
   flex-shrink: 0;
 }
 .stat-bar-container {
-  width: 30%;
+  width: 100%;
   text-align: center;
 }
 .stat-bar {
