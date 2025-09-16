@@ -295,13 +295,13 @@ document.addEventListener("DOMContentLoaded", () => {
         name = "Alp Iyol";
         break;
       case 2:
-        name = "Otto";
+        name = "Wine Society Checkpoint";
         break;
       case 3:
         name = "Kasanji";
         break;
       case 4:
-        name = "Oskari";
+        name = "Kimi";
         break;
       case 5:
         name = "Ayush";

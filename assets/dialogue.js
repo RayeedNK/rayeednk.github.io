@@ -12,7 +12,7 @@ const dialogueData = {
             ]
         },
         branch1: {
-            npcImage: "assets/alp_smile.png",
+            npcImage: "assets/alp_neutral.png",
             text: "I want this event to succeed. I’ll try again.",
             options: [
                 { text: "Yes! With teamwork, it will succeed.", next: "end", effects: { empathy: 2, regulation: 1, selfAwareness: 1 } },
@@ -20,7 +20,7 @@ const dialogueData = {
             ]
         },
         branch2: {
-            npcImage: "assets/alp_confused.png",
+            npcImage: "assets/alp_neutral.png",
             text: "Right feels natural to me.",
             options: [
                 { text: "I know it’s hard adjusting. I’ll guide you.", next: "end", effects: { empathy: 2, selfAwareness: 1 } },
@@ -36,7 +36,7 @@ const dialogueData = {
             ]
         },
         branch4: {
-            npcImage: "assets/alp_smile.png",
+            npcImage: "assets/alp_neutral.png",
             text: "I knew about reading, but not visuals.",
             options: [
                 { text: "Same, I only realized when I saw it flipped.", next: "end", effects: { empathy: 2, selfAwareness: 2 } },
@@ -44,7 +44,7 @@ const dialogueData = {
             ]
         },
         end: {
-            npcImage: "assets/alp_focus.png",
+            npcImage: "assets/alp_neutral.png",
             text: "Alp reacts and gets back to work."
         }
     },
@@ -56,7 +56,7 @@ const dialogueData = {
             text: "We need someone to manage the Wine Society checkpoint outside the church. Who do you choose?",
             options: [
                 { text: "Otto – Calm, trusted, trusted by church people, makes thoughtful decisions, avoids alcohol.", next: "end", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
-                { text: "Hunter – Experienced and efficient with wine Inspires confidence in others, though sometimes overlooks risks (rumored DUI).", next: "end", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
+                { text: "Hunter – Experienced with wine Inspires, inspires others, sometimes overlooks risks (rumored DUI).", next: "end", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
                 { text: "Ashar – Excellent at managing logistics Can handle tasks outside his comfort zone (doesn’t drink wine).", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
                 { text: "Filip – Highly goal-driven, multitasks, lives with alcohol, has work at Aalto Base and Beer Club checkpoints.", next: "end", effects: { selfAwareness: 2, regulation: 1 } }
             ]
@@ -76,7 +76,7 @@ const dialogueData = {
             ]
         },
         branch1: {
-            npcImage: "assets/kasanji_sad.png",
+            npcImage: "assets/kasanji_neutral.png",
             text: "I’m behind, sorry.",
             options: [
                 { text: "No worries, how can I help?", next: "end", effects: { empathy: 2, regulation: 2 } },
@@ -125,7 +125,7 @@ const dialogueData = {
             ]
         },
         branch2: {
-            npcImage: "assets/kimi_confused.png",
+            npcImage: "assets/kimi_neutral.png",
             text: "Uhmm, sure okay......",
             options: [
                 { text: "Sorry, I meant it’s tough for everyone.", next: "end", effects: { selfAwareness: 1, regulation: 1 } },
@@ -133,7 +133,7 @@ const dialogueData = {
             ]
         },
         branch3: {
-            npcImage: "assets/kimi_sad.png",
+            npcImage: "assets/kimi_neutral.png",
             text: "I agree, it’s difficult to see a fellow student have such a tough time.",
             options: [
                 { text: "Maybe we should support him.", next: "end", effects: { empathy: 2, selfAwareness: 1 } },
