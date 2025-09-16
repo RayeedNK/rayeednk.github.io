@@ -1,170 +1,186 @@
 const dialogueData = {
-    // LEVEL 1 – Alp’s Flyer (Cultural perspective focus).
-    1: {
-        start: {
-            npcImage: "assets/alp_neutral.png",
-            text: "Hey! I designed this flyer for the food checkpoints. I listed them from nearest(right) to furthest (left). What do you think?",
-            options: [
-                { text: "Looks fine, I’ll accept it as is.", next: "acceptDesign", effects: { empathy: 1, regulation: -1, selfAwareness: -1 } },
-                { text: "That seems confusing. Can you change it?", next: "refuseDesign", effects: { regulation: -1, selfAwareness: 1 } },
-                { text: "It’s so cool that you are following an Arabic right-to-left reading style!", next: "askArabic", effects: { empathy: 2, selfAwareness: 1 } },
-                { text: "Can you explain why it is from right to left ?", next: "askReason", effects: { empathy: 2, regulation: 2, selfAwareness: 1 } }
-            ]
-        },
-        acceptDesign: {
-            npcImage: "assets/alp_smile.png",
-            text: "Cool, thanks for supporting my idea! Though, some people might find it unusual.",
-            options: [
-                { text: "Maybe you’re right, I should reconsider.", next: "refuseDesign", effects: { selfAwareness: 1 } },
-                { text: "It’s fine, people will adapt.", next: "end", effects: { empathy: -1, selfAwareness: -1 } }
-            ]
-        },
-        refuseDesign: {
-            npcImage: "assets/alp_confused.png",
-            text: "Oh, you think it might confuse people? I just thought it looked more anime-styled, like in Japanese manga.",
-            options: [
-                { text: "That’s creative, but clarity is important.", next: "end", effects: { empathy: 2, selfAwareness: 1 } },
-                { text: "Anime or not, it’s wrong. Change it.", next: "end", effects: { empathy: -1, regulation: 1 } }
-            ]
-        },
-        askArabic: {
-            npcImage: "assets/alp_laugh.png",
-            text: "Haha, no! Not Arabic. My Japanese friend Oskari and I read manga, so I wanted the flyer to feel anime-styled.",
-            options: [
-                { text: "That’s interesting, but most people expect left-to-right.", next: "refuseDesign", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Anime style doesn’t work here, sorry.", next: "end", effects: { empathy: -1, regulation: 1 } }
-            ]
-        },
-        askReason: {
-            npcImage: "assets/alp_explain.png",
-            text: "It’s because my Japanese friend Oskari and I read manga, so I wanted it to look anime-styled!",
-            options: [
-                { text: "That’s creative! But maybe let’s balance clarity too.", next: "end", effects: { empathy: 2, selfAwareness: 1 } }
-            ]
-        },
-        end: {
-            npcImage: "assets/alp_smile.png",
-            text: "Okay, got it. Let’s move on!"
-        }
-    },
+    // LEVEL 1 – Alp’s Flyer (Cultural perspective focus).
+    1: {
+        start: {
+            npcImage: "assets/alp_neutral.png",
+            text: "I made this flyer. Right = nearest, left = farthest. Thoughts?",
+            options: [
+                { text: "This looks great! Left to right could make it even more intuitive, and that will help make our event a success!", next: "branch1", effects: { empathy: 1, selfAwareness: 1 } },
+                { text: "Right-to-left is good but most people in Finland read from left to right. Would you be open to trying both ways?", next: "branch2", effects: { regulation: 1, selfAwareness: 1 } },
+                { text: "I love it! Let’s ask the rest of the group if this works.", next: "branch3", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "Great job on the flyer! Align the checkpoints from left to right and you will get used to how people here read.", next: "branch4", effects: { empathy: 2, regulation: 2 } }
+            ]
+        },
+        branch1: {
+            npcImage: "assets/alp_smile.png",
+            text: "I want this event to succeed. I’ll try again.",
+            options: [
+                { text: "Yes! With teamwork, it will succeed.", next: "end", effects: { empathy: 2, regulation: 1, selfAwareness: 1 } },
+                { text: "Just keep the goal in mind.", next: "end", effects: { empathy: -1, selfAwareness: -1 } }
+            ]
+        },
+        branch2: {
+            npcImage: "assets/alp_confused.png",
+            text: "Right feels natural to me.",
+            options: [
+                { text: "I know it’s hard adjusting. I’ll guide you.", next: "end", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "Sorry, I didn’t see this as an issue.", next: "end", effects: { empathy: -1, selfAwareness: -1 } }
+            ]
+        },
+        branch3: {
+            npcImage: "assets/alp_neutral.png",
+            text: "Yes, hearing all opinions is good.",
+            options: [
+                { text: "Agree. You’ll get credit, but input helps.", next: "end", effects: { empathy: 2, regulation: 2 } },
+                { text: "Great! I knew you were a team player.", next: "end", effects: { selfAwareness: -1, empathy: -1 } }
+            ]
+        },
+        branch4: {
+            npcImage: "assets/alp_smile.png",
+            text: "I knew about reading, but not visuals.",
+            options: [
+                { text: "Same, I only realized when I saw it flipped.", next: "end", effects: { empathy: 2, selfAwareness: 2 } },
+                { text: "Happy to share my view anytime.", next: "end", effects: { empathy: 1, selfAwareness: 1 } }
+            ]
+        },
+        end: {
+            npcImage: "assets/alp_focus.png",
+            text: "Alp reacts and gets back to work."
+        }
+    },
 
-    // LEVEL 1.5 – Recurring distraction mini-interaction with Alp
-    distraction: {
-        start: {
-            npcImage: "assets/alp_distracted.png",
-            text: "You can either call Alp to take update for the flyer or not disturb him and let him work in peace",
-            options: [
-                { text: "Call him directly in phone", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Text him ", next: "end", effects: { empathy: 1, regulation: -1 } },
-                { text: "Let him do his work", next: "end", effects: { regulation: 1, selfAwareness: -1 } }
-            ]
-        },
-        end: {
-            npcImage: "assets/alp_focus.png",
-            text: "Alp reacts and gets back to work (or not)."
-        }
-    },
+    // LEVEL 2 – Character Traits Setup
+    2: {
+        start: {
+            npcImage: "assets/alex_trans.png",
+            text: "We need someone to manage the Wine Society checkpoint outside the church. Who do you choose?",
+            options: [
+                { text: "Otto – Emotional Balance: calm, trusted, trusted by church people, makes thoughtful decisions, avoids alcohol.", next: "end", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
+                { text: "Hunter – Experienced and efficient with wine, optimistic about handling challenges. Inspires confidence in others, though sometimes overlooks risks (rumored DUI).", next: "end", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
+                { text: "Ashar – Excellent at managing logistics Can handle tasks outside his comfort zone (doesn’t drink wine).", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
+                { text: "Filip – Highly goal-driven, multitasks, lives with alcohol, has work at Aalto Base and Beer Club checkpoints.", next: "end", effects: { selfAwareness: 2, regulation: 1 } }
+            ]
+        },
+        end: { npcImage: "assets/manager.png", text: "Lesson: Balance competence, sensitivity, and ethics in selection." }
+    },
 
-    // LEVEL 2 – Wine Society Checkpoint (Candidate Selection)
-    2: {
-        start: {
-            npcImage: "assets/manager.png",
-            text: "We need someone to manage the Wine Society checkpoint outside the church. Who do you choose?",
-            options: [
-                { text: "Otto – Christian, respected and supported by the church, avoids alcohol personally.", next: "ottoOutcome", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
-                { text: "Hunter – Experienced with wine, but rumored DUI.", next: "hunterOutcome", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
-                { text: "Ashar – Great manager, however he doesn't drink.", next: "asharOutcome", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Filip – Very Capable but already busy with Base and Beer Club.", next: "filipOutcome", effects: { selfAwareness: 2, regulation: 1 } }
-            ]
-        },
-        ottoOutcome: { npcImage: "assets/otto.png", text: "Otto connects well with church members. Smooth checkpoint, but avoids tastings.", options: [{ text: "Continue", next: "end" }] },
-        hunterOutcome: { npcImage: "assets/hunter.png", text: "Hunter is efficient and knowledgeable. Some attendees worry about rumors.", options: [{ text: "Continue", next: "end" }] },
-        asharOutcome: { npcImage: "assets/ashar.png", text: "Ashar handles logistics fine but struggles with wine questions.", options: [{ text: "Continue", next: "end" }] },
-        filipOutcome: { npcImage: "assets/filip.png", text: "Filip is competent but stretched thin. Minor delays occur.", options: [{ text: "Continue", next: "end" }] },
-        end: { npcImage: "assets/manager.png", text: "Lesson: Balance competence, sensitivity, and ethics in selection." }
-    },
+    // LEVEL 3 – Kasanji Exam Cheating
+    3: {
+        start: {
+            npcImage: "assets/kasanji_neutral.png",
+            text: "Hey...Whats up? Let me Sleep....",
+            options: [
+                { text: "Kasanji, I noticed your work isn’t on the sheets yet. I just wanted to check in and see how you’re doing with the tasks.", next: "branch1", effects: { empathy: 2, regulation: 1 } },
+                { text: "Kasanji, I was wondering how I could support you in getting your part done for the event?", next: "branch2", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "Kasanji, I noticed your work isn’t on the sheets yet. Can you make sure it’s done soon?", next: "branch3", effects: { regulation: 1 } }
+            ]
+        },
+        branch1: {
+            npcImage: "assets/kasanji_sad.png",
+            text: "I’m behind, sorry.",
+            options: [
+                { text: "No worries, how can I help?", next: "end", effects: { empathy: 2, regulation: 2 } },
+                { text: "Please try to finish faster.", next: "end", effects: { empathy: -1, regulation: -1 } }
+            ]
+        },
+        branch2: {
+            npcImage: "assets/kasanji_neutral.png",
+            text: "Thanks, I need help with details.",
+            options: [
+                { text: "I’ll walk you through.", next: "end", effects: { empathy: 2, regulation: 2, selfAwareness: 2 } },
+                { text: "Ask someone else.", next: "end", effects: { empathy: -2, selfAwareness: -1 } }
+            ]
+        },
+        branch3: {
+            npcImage: "assets/kasanji_neutral.png",
+            text: "Okay, I’ll try.",
+            options: [
+                { text: "Good, I trust you.", next: "end", effects: { regulation: 1, selfAwareness: 1 } },
+                { text: "Don’t be late again.", next: "end", effects: { empathy: -1, regulation: -1 } }
+            ]
+        },
+        end: {
+            npcImage: "assets/kasanji_neutral.png",
+            text: "Lesson: Directness vs. support impacts motivation."
+        }
+    },
 
-    // LEVEL 3 – Kasanji (Expressive teammate)
-    3: {
-        start: {
-            npcImage: "assets/kasanji_neutral.png",
-            text: "Hey...Whats up? Let me Sleep....",
-            options: [
-                { text: "Greet with a handshake and smile.", next: "handshake", effects: { empathy: 2, regulation: 1 } },
-                { text: "Wave from a distance, stay silent.", next: "waveSilent", effects: { empathy: -1, regulation: 1 } },
-                { text: "Use casual fist bump / playful gesture.", next: "fistBump", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Say nothing, just stare.", next: "awkward", effects: { empathy: -2, regulation: -2 } }
-            ]
-        },
-        handshake: { npcImage: "assets/kasanji_happy.png", text: "He responds warmly and chats with you.", options: [{ text: "Explain task energetically.", next: "energeticExplain", effects: { empathy: 2, regulation: 1 } }] },
-        waveSilent: { npcImage: "assets/kasanji_confused.png", text: "He feels ignored and hesitant.", options: [{ text: "Encourage him quietly.", next: "quietAsk", effects: { empathy: 1, selfAwareness: 1 } }] },
-        fistBump: { npcImage: "assets/kasanji_laugh.png", text: "He laughs, comfortable but wants more engagement.", options: [{ text: "Guide him physically.", next: "physicalGuide", effects: { empathy: 2, selfAwareness: 1 } }] },
-        awkward: { npcImage: "assets/kasanji_annoyed.png", text: "Awkward silence. He feels disrespected.", options: [{ text: "Try humor to recover.", next: "humor", effects: { empathy: 1, selfAwareness: 1 } }] },
+    // LEVEL 4 – Kimi Task Check
+    4: {
+        start: {
+            npcImage: "assets/kimi_neutral.png",
+            text: "So what do you think of the HUnter Situation ? I feel so uneasy.",
+            options: [
+                { text: "I totally understand how this situation makes you feel uneasy. Hunter doesn’t represent our school’s spirit at all.", next: "branch1", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "Mr AAC, I appreciate you asking me for my opinion. Hunter really should have been more considerate towards your feelings. ", next: "branch2", effects: { selfAwareness: -1, regulation: -1 } },
+                { text: "I feel terrible about the situation. You could clearly see that Hunter is in a really rough spot, I wish I could help him. ", next: "branch3", effects: { empathy: 2, regulation: 1 } }
+            ]
+        },
+        branch1: {
+            npcImage: "assets/kimi_neutral.png",
+            text: "Well, as the AAC and the member of the Probba board I can’t really comment on that",
+            options: [
+                { text: "I understand, thanks for sharing anyway.", next: "end", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "We should put the hunter guy to jail for DUI", next: "end", effects: { empathy: -1, regulation: -1 } }
+            ]
+        },
+        branch2: {
+            npcImage: "assets/kimi_confused.png",
+            text: "Uhmm, sure okay......",
+            options: [
+                { text: "Sorry, I meant it’s tough for everyone.", next: "end", effects: { selfAwareness: 1, regulation: 1 } },
+                { text: "Exactly, he disrespected you.", next: "end", effects: { empathy: -2, regulation: -2 } }
+            ]
+        },
+        branch3: {
+            npcImage: "assets/kimi_sad.png",
+            text: "I agree, it’s difficult to see a fellow student have such a tough time.",
+            options: [
+                { text: "Maybe we should support him.", next: "end", effects: { empathy: 2, selfAwareness: 1 } },
+                { text: "Still, rules are rules.", next: "end", effects: { regulation: 1 } }
+            ]
+        },
+        end: {
+            npcImage: "assets/kimi_neutral.png",
+            text: "Lesson: Your reactions impact trust and team dynamics."
+        }
+    },
 
-        energeticExplain: { npcImage: "assets/kasanji_ready.png", text: "He likes the enthusiasm and agrees quickly.", options: [{ text: "End", next: "end" }] },
-        quietAsk: { npcImage: "assets/kasanji_unsure.png", text: "He nods but seems unsure. Might delay.", options: [{ text: "End", next: "end" }] },
-        physicalGuide: { npcImage: "assets/kasanji_follow.png", text: "He enjoys interaction and follows along.", options: [{ text: "End", next: "end" }] },
-        humor: { npcImage: "assets/kasanji_smile.png", text: "Your joke lightens the mood. He joins.", options: [{ text: "End", next: "end" }] },
-        end: { npcImage: "assets/kasanji_neutral.png", text: "Lesson: Matching energy and non-verbal cues builds rapport." }
-    },
+    // Remaining levels from the original data
+    5: {
+        start: {
+            npcImage: "assets/ayush_neutral.png",
+            text: "Take this money, and do my work faster.",
+            options: [
+                { text: "Thank you, I accept it", next: "accept", effects: { selfAwareness: -2, regulation: -2 } },
+                { text: "I reject this bribery !!!", next: "reject", effects: { empathy: -1, selfAwareness: 2, regulation: 1 } },
+                { text: "What is this money for ?", next: "askReason", effects: { empathy: 2, selfAwareness: 1, regulation: 1 } },
+                { text: "How was the food in Currytime ? ", next: "deflect", effects: { empathy: 2, regulation: 2 } }
+            ]
+        },
+        accept: { npcImage: "assets/ayush_smile.png", text: "Task moves quickly, but corruption normalized.", options: [{ text: "End", next: "end" }] },
+        reject: { npcImage: "assets/ayush_offended.png", text: "He feels disrespected but you stay ethical.", options: [{ text: "Continue", next: "end" }] },
+        askReason: { npcImage: "assets/ayush_explain.png", text: "In our culture, small payments show respect for hard-work. Dialogue opens.", options: [{ text: "Continue", next: "end" }] },
+        deflect: { npcImage: "assets/ayush_relief.png", text: "What do you mean Currytime ?? I ate food at cafeteria. Nicholas told you that right?", options: [{ text: "End", next: "end" }] },
+        end: { npcImage: "assets/ayush.png", text: "Lesson: Balance ethics with empathy. Recognize silence or gifts differently across cultures." }
+    },
 
-    // LEVEL 4 – Oskari (Gestures & hierarchy)
-    4: {
-        start: {
-            npcImage: "assets/oskari_neutral.png",
-            text: "ねえ、今すぐビールが飲みたい。ビールちょうだい? (You don't understand anything)",
-            options: [
-                { text: "Bow slightly and smile politely.", next: "bow", effects: { empathy: 2, selfAwareness: 1 } },
-                { text: "Wave energetically, speak English loudly.", next: "loudWave", effects: { empathy: -1, regulation: -1 } },
-                { text: "Say hello, wait silently.", next: "gestureSilent", effects: { empathy: 1, regulation: 1 } },
-                { text: "Approach casually.", next: "casual", effects: { empathy: -2, regulation: -2 } }
-            ]
-        },
-        bow: { npcImage: "assets/oskari_smile.png", text: "Oskari nods in acknowledgment. Positive start.", options: [{ text: "Try simple Japanese phrases.", next: "speakJapanese", effects: { empathy: 2, selfAwareness: 1 } }] },
-        loudWave: { npcImage: "assets/oskari_confused.png", text: "He looks confused and uncomfortable.", options: [{ text: "End", next: "end" }] },
-        gestureSilent: { npcImage: "assets/oskari_cautious.png", text: "Acceptable but minimal engagement.", options: [{ text: "Use gestures to explain task.", next: "gestureExplain", effects: { empathy: 2, selfAwareness: 1 } }] },
-        casual: { npcImage: "assets/oskari_offended.png", text: "尊敬する方法を知らないのですか !!!", options: [{ text: "End", next: "end" }] },
-
-        speakJapanese: { npcImage: "assets/oskari_smile.png", text: "He appreciates the effort and cooperates.", options: [{ text: "End", next: "end" }] },
-        gestureExplain: { npcImage: "assets/oskari_okay.png", text: "He understands and works with you.", options: [{ text: "End", next: "end" }] },
-        end: { npcImage: "assets/oskari.png", text: "Lesson: Gestures + respect for hierarchy enable smooth teamwork." }
-    },
-
-    // LEVEL 5 – Ayush (Speed money & silence)
-    5: {
-        start: {
-            npcImage: "assets/ayush_neutral.png",
-            text: "Take this money, and do my work faster.",
-            options: [
-                { text: "Thank you, I accept it", next: "accept", effects: { selfAwareness: -2, regulation: -2 } },
-                { text: "I reject this bribery !!!", next: "reject", effects: { empathy: -1, selfAwareness: 2, regulation: 1 } },
-                { text: "What is this money for ?", next: "askReason", effects: { empathy: 2, selfAwareness: 1, regulation: 1 } },
-                { text: "How was the food in Currytime ? ", next: "deflect", effects: { empathy: 2, regulation: 2 } }
-            ]
-        },
-        accept: { npcImage: "assets/ayush_smile.png", text: "Task moves quickly, but corruption normalized.", options: [{ text: "End", next: "end" }] },
-        reject: { npcImage: "assets/ayush_offended.png", text: "He feels disrespected but you stay ethical.", options: [{ text: "End", next: "end" }] },
-        askReason: { npcImage: "assets/ayush_explain.png", text: "In our culture, small payments show respect for hard-work. Dialogue opens.", options: [{ text: "End", next: "end" }] },
-        deflect: { npcImage: "assets/ayush_relief.png", text: "What do you mean Currytime ?? I ate food at cafeteria. Nicholas told you that right?", options: [{ text: "End", next: "end" }] },
-        end: { npcImage: "assets/ayush.png", text: "Lesson: Balance ethics with empathy. Recognize silence or gifts differently across cultures." }
-    },
-
-    // LEVEL 6 – Anne (Breaking stereotypes)
-    6: {
-        start: {
-            npcImage: "assets/anne_neutral.png",
-            text: "Uhmm ??? You need something ???",
-            options: [
-                { text: "Assume quiet & reserved, speak softly.", next: "quietAssume", effects: { selfAwareness: -1, empathy: -1 } },
-                { text: "Assume direct & business-like.", next: "directAssume", effects: { regulation: 1, selfAwareness: 1 } },
-                { text: "Offer her a pink towel as a gift.", next: "genderStereotype", effects: { empathy: -2, selfAwareness: -1 } },
-                { text: "Drop assumptions: ask about her style.", next: "honestApproach", effects: { empathy: 2, regulation: 2, selfAwareness: 2 } }
-            ]
-        },
-        quietAssume: { npcImage: "assets/anne_talkative.png", text: "Hi My name is Anne ! Nice to meet you b", options: [{ text: "End", next: "end" }] },
-        directAssume: { npcImage: "assets/anne_smile.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
-        genderStereotype: { npcImage: "assets/anne_suspicious.png", text: "She glares: 'Is this because I’m a woman?!'", options: [{ text: "End", next: "end" }] },
-        honestApproach: { npcImage: "assets/anne_smile.png", text: "She appreciates honesty, happily engages.", options: [{ text: "End", next: "end" }] },
-        end: { npcImage: "assets/anne.png", text: "Lesson: Don’t rely on stereotypes. Adapt to the real individual." }
-    }
+    // LEVEL 6 – Anne (Breaking stereotypes)
+    6: {
+        start: {
+            npcImage: "assets/anne_neutral.png",
+            text: "Uhmm ??? You need something ???",
+            options: [
+                { text: "Assume quiet & reserved, speak softly.", next: "quietAssume", effects: { selfAwareness: -1, empathy: -1 } },
+                { text: "Assume direct & business-like.", next: "directAssume", effects: { regulation: 1, selfAwareness: 1 } },
+                { text: "Offer her a pink towel as a gift.", next: "genderStereotype", effects: { empathy: -2, selfAwareness: -1 } },
+                { text: "Drop assumptions: ask about her style.", next: "honestApproach", effects: { empathy: 2, regulation: 2, selfAwareness: 2 } }
+            ]
+        },
+        quietAssume: { npcImage: "assets/anne_talkative.png", text: "Hi My name is Anne ! Nice to meet you b", options: [{ text: "End", next: "end" }] },
+        directAssume: { npcImage: "assets/anne_smile.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
+        genderStereotype: { npcImage: "assets/anne_suspicious.png", text: "She glares: 'Is this because I’m a woman?!'", options: [{ text: "End", next: "end" }] },
+        honestApproach: { npcImage: "assets/anne_smile.png", text: "She appreciates honesty, happily engages.", options: [{ text: "End", next: "end" }] },
+        end: { npcImage: "assets/anne.png", text: "Lesson: Don’t rely on stereotypes. Adapt to the real individual." }
+    }
 };

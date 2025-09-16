@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       image: "assets/Kimi.png",
-      text: "Your Mission:<br> Hi I am Kimi, the Academic Affairs Coordinator. We have a new Professor who came from Japan and we need to make a good first impression for him. Can you please approach him in a way that builds trust and teamwork.",
+      text: "Your Mission:<br> Hi I'm Kimi, the O-week person from Probba. Today,  I caught a guy named Hunter for cheating on the O-Week Exam, and after that it's kinda been rough. I feel uneasy about it and need some suggestion. ",
     },
     {
       image: "assets/pihla.png",
@@ -131,22 +131,22 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       image: "assets/otto.png",
       description:
-        "<b>Otto</b><br>Christian, respected, avoids alcohol personally. Trusted by church members.",
+        "<b>Otto</b><br>Traits: Calm, respected, trusted by church members. Maintains self-control and makes thoughtful decisions, even in social situations, by avoiding alcohol personally.",
     },
     {
       image: "assets/hunter.png",
       description:
-        "<b>Hunter</b><br>Experienced with wine, but rumored DUI. Efficient and knowledgeable.",
+        "<b>Hunter</b><br>Experienced and efficient with wine, optimistic about handling challenges. Inspires confidence in others, though sometimes overlooks risks (rumored DUI).",
     },
     {
       image: "assets/ashar.png",
       description:
-        "<b>Ashar</b><br>Great manager. Handles logistics well. However, doesnt drink wine",
+        "<b>Ashar</b><br>Excellent at managing logistics and adjusting to circumstances. Can handle tasks outside his comfort zone (doesn’t drink wine) while keeping operations smooth.",
     },
     {
       image: "assets/filip.png",
       description:
-        "<b>Filip</b><br>Capable but already busy with managing Baba Beer Club and Aalto BASE. Competent but stretched thin.",
+        "<b>Filip</b><br>Highly goal-focused and capable, successfully manages multiple responsibilities, lived with alcohol, busy with managing Baba Beer Club and Aalto BASE. Competent but stretched thin.",
     },
   ];
 
