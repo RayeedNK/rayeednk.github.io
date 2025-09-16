@@ -83,11 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
       text: "Your Mission:<br>Hi I am Alex, the International affairs coordinator. I need help in selecting the right person to manage the Wine Society checkpoint here at the church. Consider their background and the needs of the event. I am providing you a list of the candidates.",
     },
     {
-      image: "assets/Nic.png",
+      image: "assets/nic.png",
       text: "Your Mission:<br>Hi I am Nicholas, the Treasurer of Probba. While looking through the financial sheets I saw one guy called Kasanji missing! People are suspecting that he is sleeping and not doing his work. Convince him to join and help with the event.",
     },
     {
-      image: "assets/Kimi.png",
+      image: "assets/kimi.png",
       text: "Your Mission:<br> Hi I'm Kimi, the O-week person from Probba. Today,  I caught a guy named Hunter for cheating on the O-Week Exam, and after that it's kinda been rough. I feel uneasy about it and need some suggestion. ",
     },
     {
