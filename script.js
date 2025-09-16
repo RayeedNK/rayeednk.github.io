@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       image: "assets/kimi.png",
-      text: "Your Mission:<br> Hi I'm Kimi, the O-week person from Probba. Today,  I caught a guy named Hunter for cheating on the O-Week Exam, and after that it's kinda been rough. I feel uneasy about it and need some suggestion. ",
+      text: "Your Mission:<br> Hi I'm Kimi, the Academic Affairs Coordinator from Probba. Today,  I caught a guy named Hunter for cheating on the O-Week Exam, and after that it's kinda been rough. I feel uneasy about it and need some suggestion. ",
     },
     {
       image: "assets/pihla.png",
