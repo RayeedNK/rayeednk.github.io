@@ -359,9 +359,10 @@ body {
   height: 450px;    /* or set a fixed height */
   object-fit: contain; /* keeps aspect ratio */
   display: block;
-  margin: 0 auto;  /* center the image */
   border: #007bff;
   border-radius: 50%;
+  margin-right: auto;
+  margin-left: auto;
 }
   
 #profile-description {
