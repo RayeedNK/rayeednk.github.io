@@ -109,7 +109,7 @@ const dialogueData = {
     4: {
         start: {
             npcImage: "assets/kimi_neutral.png",
-            text: "So what do you think of the HUnter Situation ? I feel so uneasy.",
+            text: "So what do you think of the Hunter Situation ? I feel so uneasy.",
             options: [
                 { text: "I totally understand how this situation makes you feel uneasy. Hunter doesn’t represent our school’s spirit at all.", next: "branch1", effects: { empathy: 2, selfAwareness: 1 } },
                 { text: "Mr AAC, I appreciate you asking me for my opinion. Hunter really should have been more considerate towards your feelings. ", next: "branch2", effects: { selfAwareness: -1, regulation: -1 } },
