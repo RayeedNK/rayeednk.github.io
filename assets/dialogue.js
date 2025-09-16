@@ -158,10 +158,10 @@ const dialogueData = {
                 { text: "How was the food in Currytime ? ", next: "deflect", effects: { empathy: 2, regulation: 2 } }
             ]
         },
-        accept: { npcImage: "assets/ayush_smile.png", text: "Task moves quickly, but corruption normalized.", options: [{ text: "End", next: "end" }] },
-        reject: { npcImage: "assets/ayush_offended.png", text: "He feels disrespected but you stay ethical.", options: [{ text: "Continue", next: "end" }] },
-        askReason: { npcImage: "assets/ayush_explain.png", text: "In our culture, small payments show respect for hard-work. Dialogue opens.", options: [{ text: "Continue", next: "end" }] },
-        deflect: { npcImage: "assets/ayush_relief.png", text: "What do you mean Currytime ?? I ate food at cafeteria. Nicholas told you that right?", options: [{ text: "End", next: "end" }] },
+        accept: { npcImage: "assets/ayush_neutral.png", text: "Task moves quickly, but corruption normalized.", options: [{ text: "End", next: "end" }] },
+        reject: { npcImage: "assets/ayush_neutral.png", text: "He feels disrespected but you stay ethical.", options: [{ text: "Continue", next: "end" }] },
+        askReason: { npcImage: "assets/ayush_neutral.png", text: "In our culture, small payments show respect for hard-work. Dialogue opens.", options: [{ text: "Continue", next: "end" }] },
+        deflect: { npcImage: "assets/ayush_neutral.png", text: "What do you mean Currytime ?? I ate food at cafeteria. Nicholas told you that right?", options: [{ text: "End", next: "end" }] },
         end: { npcImage: "assets/ayush.png", text: "Lesson: Balance ethics with empathy. Recognize silence or gifts differently across cultures." }
     },
 
@@ -177,10 +177,10 @@ const dialogueData = {
                 { text: "Drop assumptions: ask about her style.", next: "honestApproach", effects: { empathy: 2, regulation: 2, selfAwareness: 2 } }
             ]
         },
-        quietAssume: { npcImage: "assets/anne_talkative.png", text: "Hi My name is Anne ! Nice to meet you b", options: [{ text: "End", next: "end" }] },
-        directAssume: { npcImage: "assets/anne_smile.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
-        genderStereotype: { npcImage: "assets/anne_suspicious.png", text: "She glares: 'Is this because I’m a woman?!'", options: [{ text: "End", next: "end" }] },
-        honestApproach: { npcImage: "assets/anne_smile.png", text: "She appreciates honesty, happily engages.", options: [{ text: "End", next: "end" }] },
+        quietAssume: { npcImage: "assets/anne_neutral.png", text: "Hi My name is Anne ! Nice to meet you b", options: [{ text: "End", next: "end" }] },
+        directAssume: { npcImage: "assets/anne_neutral.png", text: "She laughs and teases you for bluntness, but keeps talking.", options: [{ text: "End", next: "end" }] },
+        genderStereotype: { npcImage: "assets/anne_neutral.png", text: "She glares: 'Is this because I’m a woman?!'", options: [{ text: "End", next: "end" }] },
+        honestApproach: { npcImage: "assets/anne_neutral.png", text: "She appreciates honesty, happily engages.", options: [{ text: "End", next: "end" }] },
         end: { npcImage: "assets/anne.png", text: "Lesson: Don’t rely on stereotypes. Adapt to the real individual." }
     }
 };
