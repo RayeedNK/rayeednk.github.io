@@ -58,7 +58,7 @@ const dialogueData = {
                 { text: "Otto – Calm, trusted, trusted by church people, makes thoughtful decisions, avoids alcohol.", next: "end", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
                 { text: "Hunter – Experienced with wine, inspires others, sometimes overlooks risks (rumored DUI).", next: "end", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
                 { text: "Ashar – Excellent at logistics(doesn’t drink wine).", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Oskari – Highly goal-driven, multitasks, lives with alcohol, has work at Aalto Base and Beer Club checkpoints.", next: "end", effects: { selfAwareness: 2, regulation: 1 } }
+                { text: "Oskari – Highly goal-driven, multitasks, lives with alcohol, has work at PROBBA checkpoint.", next: "end", effects: { selfAwareness: 2, regulation: 1 } }
             ]
         },
         end: { npcImage: "assets/manager.png", text: "Lesson: Balance competence, sensitivity, and ethics in selection." }
