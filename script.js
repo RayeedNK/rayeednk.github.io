@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "<b>Ashar</b><br>Excellent at managing logistics and adjusting to circumstances. Can handle tasks outside his comfort zone (doesn’t drink wine) while keeping operations smooth.",
     },
     {
-      image: "assets/Oskari.png",
+      image: "assets/oskari.png",
       description:
         "<b>Oskari</b><br>Highly goal-focused and capable, successfully manages multiple responsibilities, lived with alcohol, busy with managing PROBBA. Competent but stretched thin.",
     },
