@@ -53,12 +53,12 @@ const dialogueData = {
     2: {
         start: {
             npcImage: "assets/alex_trans.png",
-            text: "We need someone to manage the Wine Society checkpoint outside the church. Who do you choose?",
+            text: "We need someone for the Wine Society checkpoint outside church. Who do you choose?",
             options: [
                 { text: "Otto – Calm, trusted, trusted by church people, makes thoughtful decisions, avoids alcohol.", next: "end", effects: { empathy: 1, selfAwareness: 1, regulation: 1 } },
-                { text: "Hunter – Experienced with wine Inspires, inspires others, sometimes overlooks risks (rumored DUI).", next: "end", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
-                { text: "Ashar – Excellent at managing logistics Can handle tasks outside his comfort zone (doesn’t drink wine).", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
-                { text: "Filip – Highly goal-driven, multitasks, lives with alcohol, has work at Aalto Base and Beer Club checkpoints.", next: "end", effects: { selfAwareness: 2, regulation: 1 } }
+                { text: "Hunter – Experienced with wine, inspires others, sometimes overlooks risks (rumored DUI).", next: "end", effects: { empathy: -1, selfAwareness: 1, regulation: 2 } },
+                { text: "Ashar – Excellent at logistics(doesn’t drink wine).", next: "end", effects: { empathy: 1, selfAwareness: 1 } },
+                { text: "Oskari – Highly goal-driven, multitasks, lives with alcohol, has work at Aalto Base and Beer Club checkpoints.", next: "end", effects: { selfAwareness: 2, regulation: 1 } }
             ]
         },
         end: { npcImage: "assets/manager.png", text: "Lesson: Balance competence, sensitivity, and ethics in selection." }
