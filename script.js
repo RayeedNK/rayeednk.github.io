@@ -75,31 +75,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const taskDescriptions = [
     {
-      image: "assets/probba_member1.png",
+      image: "assets/pihla.png",
       text: "Your Mission:<br> Hi I am Pihla the Communications Coordinator. Alp Iyol is your Arab friend from the Middle East. He has been given the task to draft a flyer for Running BaBa food checkpoints. However, the initial draft looks a bit unusual for some people as the food stalls are listed from right to left. Your job is to solve the situation.",
     },
     {
-      image: "assets/probba_member2.png",
+      image: "assets/alex.png",
       text: "Your Mission:<br>Hi I am Alex, the International affairs coordinator. I need help in selecting the right person to manage the Wine Society checkpoint here at the church. Consider their background and the needs of the event. I am providing you a list of the candidates.",
     },
     {
-      image: "assets/probba_member3.png",
+      image: "assets/Nic.png",
       text: "Your Mission:<br>Hi I am Nicholas, the Treasurer of Probba. While looking through the financial sheets I saw one guy called Kasanji missing! People are suspecting that he is sleeping and not doing his work. Convince him to join and help with the event.",
     },
     {
-      image: "assets/probba_member4.png",
+      image: "assets/Kimi.png",
       text: "Your Mission:<br> Hi I am Kimi, the Academic Affairs Coordinator. We have a new Professor who came from Japan and we need to make a good first impression for him. Can you please approach him in a way that builds trust and teamwork.",
     },
     {
-      image: "assets/probba_member5.png",
+      image: "assets/pihla.png",
       text: "Your Mission:<br>Hey there again! While having lunch at the school cafeteria today, Probba agreed to make a Study Club for ayush. Now when I met him here, he offered me personally 100 Euro to do it faster. I dont mind extra money but still can you talk to him about it ?",
     },
     {
-      image: "assets/probba_member6.png",
+      image: "assets/nic.png",
       text: "Your Mission:<br>Hey there! I came to tidy this place up when this Finnish girl entered and started playing pool. Finnish people are quite reserved so I am not sure how to approach her. Can you ask what her concerns are about ?.",
     },
     {
-      image: "assets/probba_member7.png",
+      image: "assets/kimi.png",
       text: "Your Mission:<br>Hunter and Ayush are fighting in class. What will you do?",
     },
   ];

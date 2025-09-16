@@ -354,6 +354,16 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
+#task-desc-image {
+  width: 450px;    /* or any width you want */
+  height: 450px;    /* or set a fixed height */
+  object-fit: contain; /* keeps aspect ratio */
+  display: block;
+  margin: 0 auto;  /* center the image */
+  border: #007bff;
+  border-radius: 50%;
+}
+  
 #profile-description {
   font-size: 1.2em;
   color: #ecf0f1;
@@ -442,6 +452,14 @@ body {
 /******************************************/
 
 @media (max-width: 768px) {
+  #task-desc-image {
+     width: 200px;
+    height: 200px;
+    margin: 0 0 0px 0;
+    border-radius: 50%;
+    margin-right: auto;
+    margin-left: auto;
+  }
   .screen {
     padding: 10px;
   }
